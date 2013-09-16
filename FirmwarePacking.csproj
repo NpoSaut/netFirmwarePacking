@@ -44,6 +44,11 @@
     <Compile Include="FirmwareTargetInformation.cs" />
     <Compile Include="PackageInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemsIndexes\BlockKind.cs" />
+    <Compile Include="SystemsIndexes\Index.cs" />
+    <Compile Include="SystemsIndexes\ModuleKind.cs" />
+    <Compile Include="SystemsIndexes\SystemKind.cs" />
+    <Compile Include="SystemsIndexes\XmlIndex.cs" />
     <Compile Include="ZipStorer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
