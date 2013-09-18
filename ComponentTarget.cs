@@ -9,7 +9,7 @@ namespace FirmwarePacking
     /// <summary>
     /// Информация о модуле назначения прошивки
     /// </summary>
-    public class FirmwareTargetInformation
+    public class ComponentTarget
     {
         /// <summary>Идентификатор системы</summary>
         public int SystemId { get; set; }
@@ -22,9 +22,9 @@ namespace FirmwarePacking
         /// <summary>Номер модуля</summary>
         public int Module { get; set; }
 
-        public FirmwareTargetInformation()
+        public ComponentTarget()
         { }
-        public FirmwareTargetInformation(XElement XTarget)
+        public ComponentTarget(XElement XTarget)
             : this()
         {
             SystemId = (int)XTarget.Attribute("System");
@@ -46,8 +46,8 @@ namespace FirmwarePacking
                 );
         }
 
-        public static explicit operator XElement(FirmwareTargetInformation ti) { return ti.ToXElement(); }
-        public static explicit operator FirmwareTargetInformation(XElement xti) { return new FirmwareTargetInformation(xti); }
+        public static explicit operator XElement(ComponentTarget ti) { return ti.ToXElement(); }
+        public static explicit operator ComponentTarget(XElement xti) { return new ComponentTarget(xti); }
 
         public override string ToString()
         {

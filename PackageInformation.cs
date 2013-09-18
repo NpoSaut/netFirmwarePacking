@@ -15,8 +15,6 @@ namespace FirmwarePacking
         public Version FirmwareVersion { get; set; }
         /// <summary>Дата релиза прошивки</summary>
         public DateTime ReleaseDate { get; set; }
-        /// <summary>Целевые модули для прошивки</summary>
-        public List<FirmwareTargetInformation> Targets { get; set; }
 
         public PackageInformation() { }
         public PackageInformation(XElement XInformation)
@@ -27,15 +25,12 @@ namespace FirmwarePacking
                 major: (int)XVersionInfo.Attribute("Major"),
                 minor: (int?)XVersionInfo.Attribute("Minor") ?? 0);
             ReleaseDate = (DateTime)XVersionInfo.Attribute("ReleaseDate");
-
-            Targets = XInformation.Elements("TargetModule").Select(XTarget => new FirmwareTargetInformation(XTarget)).ToList();
         }
 
         public XElement ToXElement() { return ToXElement("FirmwareInformation"); }
         public XElement ToXElement(String ElementName)
         {
             return new XElement(ElementName,
-                Targets.Select(target => target.ToXElement("TargetModule")),
                 new XElement("Version",
                     new XAttribute("Major", FirmwareVersion.Major),
                     new XAttribute("Minor", FirmwareVersion.Minor),
