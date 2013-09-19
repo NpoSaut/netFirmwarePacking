@@ -11,6 +11,7 @@ namespace FirmwarePacking
     public class FirmwarePackage
     {
         public const string FirmwarePackageExtension = "sfp";
+        private const char ZipFileDirectorySeparatorChar = '/';
 
         public PackageInformation Information { get; set; }
         public List<FirmwareComponent> Components { get; set; }
@@ -102,13 +103,13 @@ namespace FirmwarePacking
         }
         private static string GetFirstDirName(string p)
         {
-            if (p.Contains(Path.DirectorySeparatorChar))
-                return p.Substring(0, p.IndexOf(Path.DirectorySeparatorChar));
+            if (p.Contains(ZipFileDirectorySeparatorChar))
+                return p.Substring(0, p.IndexOf(ZipFileDirectorySeparatorChar));
             else return p;
         }
         private static string GetRelativePath(string p)
         {
-            return Path.Combine(p.Split(new char[] { Path.DirectorySeparatorChar }).Skip(1).ToArray());
+            return Path.Combine(p.Split(new char[] { ZipFileDirectorySeparatorChar }).Skip(1).ToArray());
         }
 
     }
