@@ -22,8 +22,16 @@ namespace FirmwarePacking
         /// <summary>Номер модуля</summary>
         public int Module { get; set; }
 
-        public ComponentTarget()
-        { }
+        public ComponentTarget() { }
+        public ComponentTarget(int SystemId, int CellId, int CellModification, int Channel, int Module)
+            : this()
+        {
+            this.SystemId = SystemId;
+            this.CellId = CellId;
+            this.CellModification = CellModification;
+            this.Channel = Channel;
+            this.Module = Module;    
+        }
         public ComponentTarget(XElement XTarget)
             : this()
         {
@@ -38,11 +46,11 @@ namespace FirmwarePacking
         public XElement ToXElement(String ElementName)
         {
             return new XElement(ElementName,
-                new XElement("System", SystemId),
-                new XElement("Cell", CellId),
-                new XElement("Modification", CellModification),
-                new XElement("Channel", Channel),
-                new XElement("Module", Module)
+                new XAttribute("System", SystemId),
+                new XAttribute("Cell", CellId),
+                new XAttribute("Modification", CellModification),
+                new XAttribute("Channel", Channel),
+                new XAttribute("Module", Module)
                 );
         }
 
@@ -52,6 +60,35 @@ namespace FirmwarePacking
         public override string ToString()
         {
             return string.Format("Sys={0} Cell={1}[{2}]/{3} Module={4}", SystemId, CellId, CellModification, Channel, Module);
+        }
+
+        public static bool operator ==(ComponentTarget a, ComponentTarget b)
+        {
+            if (object.ReferenceEquals(a, b)) return true;
+            else if (object.ReferenceEquals(a, null) || object.ReferenceEquals(b, null)) return false;
+            else return a.Equals(b);
+        }
+        public static bool operator !=(ComponentTarget a, ComponentTarget b) { return !(a == b); }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            else return Equals(obj as ComponentTarget);
+        }
+        public bool Equals(ComponentTarget t)
+        {
+            if (t == null) return false;
+            else return
+                t.SystemId == this.SystemId &&
+                t.CellId == this.CellId &&
+                t.CellModification == this.CellModification &&
+                t.Module == this.Module &&
+                t.Channel == this.Channel;
+        }
+
+        public override int GetHashCode()
+        {
+            return ToString().GetHashCode();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace FirmwarePacking
         public FirmwareComponent(XElement XComponent, IEnumerable<FirmwareFile> Files)
             : this()
         {
-            Targets = XComponent.Elements("Targets").Select(XTarget => (ComponentTarget)XTarget).ToList();
+            Targets = XComponent.Elements("TargetModule").Select(XTarget => (ComponentTarget)XTarget).ToList();
             this.Files = Files.ToList();
         }
 

@@ -10,9 +10,12 @@ namespace FirmwarePacking
 {
     public class FirmwarePackage
     {
+        public const string FirmwarePackageExtension = "sfp";
+
         public PackageInformation Information { get; set; }
         public List<FirmwareComponent> Components { get; set; }
 
+        public static FirmwarePackage Open(String FileName) { return Open(new FileInfo(FileName)); }
         public static FirmwarePackage Open(FileInfo File)
         {
             using (ZipStorer pack = ZipStorer.Open(File.OpenRead(), FileAccess.Read))
@@ -28,7 +31,7 @@ namespace FirmwarePacking
                 return
                     new FirmwarePackage()
                     {
-                        Information = new PackageInformation(doc.Root),
+                        Information = new PackageInformation(doc.Root.Element("FirmwareInformation")),
                         Components = doc.Root.Elements("Component").Select(XComponent =>
                             new FirmwareComponent(
                                 XComponent: XComponent,
@@ -41,6 +44,7 @@ namespace FirmwarePacking
         {
             return new XDocument(
                 new XElement("FirmwareInfo",
+                    Information.ToXElement(),
                     Components.Select((comp, i) =>
                     new XElement("Component",
                         new XAttribute("Directory", comp.Name),
