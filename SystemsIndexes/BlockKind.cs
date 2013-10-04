@@ -17,7 +17,7 @@ namespace FirmwarePacking.SystemsIndexes
             set
             {
                 if (value == null || value.Count == 0)
-                    _Modules = new List<ModuleKind>() { new ModuleKind() { Id = 0, Name = "Основной модуль" } };
+                    _Modules = new List<ModuleKind>() { new ModuleKind() { Id = 1, Name = "Основной модуль" } };
                 else
                     _Modules = value;
             }
