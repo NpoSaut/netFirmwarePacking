@@ -90,7 +90,7 @@ namespace FirmwarePacking
         {
             return zip.ReadCentralDir()
                 .Where(f => GetFirstDirName(f.FilenameInZip) == componentRoot)
-                .Select(f => new FirmwareFile(GetRelativePath(f.FilenameInZip), GetFile(zip, f)))
+                .Select(f => new FirmwareFile(f.FilenameInZip.Substring(componentRoot.Length + 1), GetFile(zip, f)))
                 .ToList();
         }
 
@@ -106,10 +106,6 @@ namespace FirmwarePacking
             if (p.Contains(ZipFileDirectorySeparatorChar))
                 return p.Substring(0, p.IndexOf(ZipFileDirectorySeparatorChar));
             else return p;
-        }
-        private static string GetRelativePath(string p)
-        {
-            return Path.Combine(p.Split(new char[] { ZipFileDirectorySeparatorChar }).Skip(1).ToArray());
         }
 
     }
