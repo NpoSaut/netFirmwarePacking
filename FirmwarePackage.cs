@@ -108,5 +108,14 @@ namespace FirmwarePacking
             else return p;
         }
 
+        /// <summary>
+        /// Находит компонент, подходящий для указанной цели
+        /// </summary>
+        /// <param name="Target">Цель для прошивки</param>
+        /// <returns>Подходящий компонент</returns>
+        public FirmwareComponent GetComponentFor(ComponentTarget Target)
+        {
+            return Components.First(c => c.Targets.Contains(Target));
+        }
     }
 }
