@@ -11,8 +11,6 @@ namespace FirmwarePacking
     /// </summary>
     public class ComponentTarget
     {
-        /// <summary>Идентификатор системы</summary>
-        public int SystemId { get; set; }
         /// <summary>Идентификатор ячейки</summary>
         public int CellId { get; set; }
         /// <summary>Модификация ячейки</summary>
@@ -26,7 +24,6 @@ namespace FirmwarePacking
         public ComponentTarget(int SystemId, int CellId, int CellModification, int Channel, int Module)
             : this()
         {
-            this.SystemId = SystemId;
             this.CellId = CellId;
             this.CellModification = CellModification;
             this.Channel = Channel;
@@ -35,7 +32,6 @@ namespace FirmwarePacking
         public ComponentTarget(XElement XTarget)
             : this()
         {
-            SystemId = (int)XTarget.Attribute("System");
             CellId = (int)XTarget.Attribute("Cell");
             CellModification = (int)XTarget.Attribute("Modification");
             Channel = (int)XTarget.Attribute("Channel");
@@ -46,7 +42,6 @@ namespace FirmwarePacking
         public XElement ToXElement(String ElementName)
         {
             return new XElement(ElementName,
-                new XAttribute("System", SystemId),
                 new XAttribute("Cell", CellId),
                 new XAttribute("Modification", CellModification),
                 new XAttribute("Channel", Channel),
@@ -59,7 +54,7 @@ namespace FirmwarePacking
 
         public override string ToString()
         {
-            return string.Format("Sys={0} Cell={1}[{2}]/{3} Module={4}", SystemId, CellId, CellModification, Channel, Module);
+            return string.Format("Cell={0}[{1}]/{2} Module={3}", CellId, CellModification, Channel, Module);
         }
 
         public static bool operator ==(ComponentTarget a, ComponentTarget b)
@@ -79,7 +74,6 @@ namespace FirmwarePacking
         {
             if (t == null) return false;
             else return
-                t.SystemId == this.SystemId &&
                 t.CellId == this.CellId &&
                 t.CellModification == this.CellModification &&
                 t.Module == this.Module &&

@@ -8,6 +8,6 @@ namespace FirmwarePacking.SystemsIndexes
 {
     public abstract class Index
     {
-        public abstract ReadOnlyCollection<SystemKind> Systems { get; }
+        public abstract ReadOnlyCollection<BlockKind> Blocks { get; }
     }
 }
