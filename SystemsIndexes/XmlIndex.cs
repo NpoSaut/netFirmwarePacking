@@ -30,6 +30,12 @@ namespace FirmwarePacking.SystemsIndexes
                                     {
                                         Id = (int)XModule.Attribute("id"),
                                         Name = (String)XModule.Attribute("name")
+                                    }).ToList(),
+                                Modifications = XBlock.Elements("modification").Select(XModule =>
+                                    new ModificationKind()
+                                    {
+                                        Id = (int)XModule.Attribute("id"),
+                                        Name = (String)XModule.Attribute("name")
                                     }).ToList()
                             }).ToList());
         }

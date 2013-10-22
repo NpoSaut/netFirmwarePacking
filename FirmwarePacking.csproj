@@ -50,6 +50,7 @@
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="SystemsIndexes\BlockKind.cs" />
     <Compile Include="SystemsIndexes\Index.cs" />
+    <Compile Include="SystemsIndexes\ModificationKind.cs" />
     <Compile Include="SystemsIndexes\ModuleKind.cs" />
     <Compile Include="SystemsIndexes\XmlIndex.cs" />
     <Compile Include="ZipStorer.cs" />
