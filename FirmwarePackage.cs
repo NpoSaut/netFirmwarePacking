@@ -10,6 +10,13 @@ namespace FirmwarePacking
 {
     public class FirmwarePackage
     {
+        /// <summary>Текущая версия формата упаковщика</summary>
+        public const int Format_ActualVersion = 2;
+        /// <summary>Самая старая версия упаковщика, совместимая с текущим форматом</summary>
+        public const int Format_CompatibleVersion = 1;
+        /// <summary>Текущая версия формата упаковки, совместимая с данной библиотекой</summary>
+        public const int Format_LastSupportedVersion = 1;
+
         public const string FirmwarePackageExtension = "sfp";
         private const char ZipFileDirectorySeparatorChar = '/';
 
@@ -29,6 +36,10 @@ namespace FirmwarePacking
 
                 XDocument doc = XDocument.Load(ms);
 
+                // Проверка версии файла с прошивкой
+                if (IsFormatVersionCompatible((int?)doc.Root.Attribute("FormatVersion") ?? 1, (int?)doc.Root.Attribute("FormatCompatibleVersion") ?? 1) == FormatVersionCompatiblity.NotCompatible)
+                    throw new Exceptions.FirmwarePackageUncompatibleFormatException();
+
                 return
                     new FirmwarePackage()
                     {
@@ -41,10 +52,25 @@ namespace FirmwarePacking
             }
         }
 
+        public enum FormatVersionCompatiblity { Actual, Compatible, NotCompatible }
+        public static FormatVersionCompatiblity IsFormatVersionCompatible(int Version, int CompatibleVersion)
+        {
+            // Если версии форматов полностью совпадают
+            if (Version == Format_ActualVersion) return FormatVersionCompatiblity.Actual;
+            // Если версия формата файла устарела, но всё ещё является поддерживаемой данной библиотекой
+            else if (Version < Format_ActualVersion && Version >= Format_LastSupportedVersion) return FormatVersionCompatiblity.Compatible;
+            // Если версия формата новее, чем версия формата данной библиотеки, но она является совместимой с устаревшей версией библиотеки
+            else if (Version > Format_ActualVersion && CompatibleVersion <= Format_ActualVersion) return FormatVersionCompatiblity.Compatible;
+            // Ну, и во всех остальных случаях считаем версию не совместимой
+            else return FormatVersionCompatiblity.NotCompatible;
+        }
+
         private XDocument GetIndex()
         {
             return new XDocument(
                 new XElement("FirmwareInfo",
+                    new XAttribute("FormatVersion", Format_ActualVersion),
+                    new XAttribute("FormatCompatibleVersion", Format_CompatibleVersion),
                     Information.ToXElement(),
                     Components.Select((comp, i) =>
                     new XElement("Component",

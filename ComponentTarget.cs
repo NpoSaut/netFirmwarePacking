@@ -42,6 +42,8 @@ namespace FirmwarePacking
         public XElement ToXElement(String ElementName)
         {
             return new XElement(ElementName,
+#warning Атрибут с типом системы добавлен только для совместимости с предидущими версиями
+                new XAttribute("System", 1),
                 new XAttribute("Cell", CellId),
                 new XAttribute("Modification", CellModification),
                 new XAttribute("Channel", Channel),

@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\FirmwarePackageFormatException.cs" />
+    <Compile Include="Exceptions\FirmwarePackageUncompatibleFormatException.cs" />
     <Compile Include="FimwareComponent.cs" />
     <Compile Include="FirmwareFile.cs" />
     <Compile Include="FirmwarePackage.cs" />
