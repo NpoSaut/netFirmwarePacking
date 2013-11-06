@@ -116,6 +116,7 @@ namespace FirmwarePacking
         {
             return zip.ReadCentralDir()
                 .Where(f => GetFirstDirName(f.FilenameInZip) == componentRoot)
+                .Where(f => !f.FilenameInZip.EndsWith(ZipFileDirectorySeparatorChar + ""))
                 .Select(f => new FirmwareFile(f.FilenameInZip.Substring(componentRoot.Length + 1), GetFile(zip, f)))
                 .ToList();
         }
