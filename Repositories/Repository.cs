@@ -16,7 +16,7 @@ namespace FirmwarePacking.Repositories
         /// Находит пакет прошивки, содержащий компоненты для всех указанных целей
         /// </summary>
         /// <param name="Targets">Цели прошивки</param>
-        public IEnumerable<FirmwarePackage> GetPackagesForTargets(params ComponentTarget[] Targets) { return GetPackagesForTargets(Targets); }
+        public IEnumerable<FirmwarePackage> GetPackagesForTargets(params ComponentTarget[] Targets) { return GetPackagesForTargets((IList<ComponentTarget>)Targets); }
         /// <summary>
         /// Находит пакет прошивки, содержащий компоненты для всех указанных целей
         /// </summary>

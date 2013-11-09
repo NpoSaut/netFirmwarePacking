@@ -11,6 +11,21 @@ namespace FirmwarePacking.Repositories
     /// </summary>
     public class DirectoryRepository : Repository
     {
+        /// <summary>
+        /// Путь к папке с пользовательскими репозиториями
+        /// </summary>
+        public static String UserRepositoryDirectory
+        {
+            get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Firmwares"); }
+        }
+        /// <summary>
+        /// Путь к папке с репозиторием приложения
+        /// </summary>
+        public static String ApplicatoinRepositoryDirectory
+        {
+            get { return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Repository"); }
+        }
+
         /// <summary>Папка расположения репозитория</summary>
         public DirectoryInfo RepositoryRoot { get; private set; }
 
