@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Collections.ObjectModel;
 using System.Xml.Linq;
@@ -38,6 +39,19 @@ namespace FirmwarePacking.SystemsIndexes
                                         Name = (String)XModule.Attribute("name")
                                     }).ToList()
                             }).ToList());
+        }
+    }
+
+    public class ResourceXmlIndex : XmlIndex
+    {
+        public ResourceXmlIndex() : base(GetInjectedIndex()) { }
+
+        private static XElement GetInjectedIndex()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var manifestResourceStream = assembly.GetManifestResourceStream("FirmwarePacking.BlockKinds.xml");
+            var document = XDocument.Load(manifestResourceStream);
+            return document.Root;
         }
     }
 }
