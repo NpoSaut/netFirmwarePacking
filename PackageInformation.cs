@@ -22,7 +22,7 @@ namespace FirmwarePacking
             get { return _firmwareVersionLabel; }
             set
             {
-                if (value.Length > 4) throw new ArgumentException("Длина метки версии не может превышать 4 символов");
+                if (value != null && value.Length > 4) throw new ArgumentException("Длина метки версии не может превышать 4 символов");
                 _firmwareVersionLabel = value;
             }
         }
