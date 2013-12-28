@@ -54,5 +54,11 @@ namespace FirmwarePacking
 
         public static explicit operator XElement(PackageInformation pi) { return pi.ToXElement(); }
         public static explicit operator PackageInformation(XElement xpi) { return new PackageInformation(xpi); }
+
+        public override string ToString()
+        {
+            return string.Format("Версия {0}{1}", FirmwareVersion,
+                                 string.IsNullOrWhiteSpace(FirmwareVersionLabel) ? "" : (" " + FirmwareVersionLabel));
+        }
     }
 }
