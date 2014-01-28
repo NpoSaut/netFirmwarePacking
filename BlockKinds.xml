@@ -10,6 +10,9 @@
   <block id="22" name="ВЫВОД-КХ" channels="2">
     <modification id="1" name="Базовая" device="at90can128" />
   </block>
+  <block id="23" name="ВЫВОД" channels="2">
+    <modification id="1" name="Базовая" device="at90can128" />
+  </block>
   <block id="10" name="Монитор-5" channels="1" >
     <module id="1" name="Индикатор" />
     <modification id="1" name="Базовая" device="win32" />
