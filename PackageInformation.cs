@@ -48,7 +48,7 @@ namespace FirmwarePacking
                 new XElement("Version",
                     new XAttribute("Major", FirmwareVersion.Major),
                     new XAttribute("Minor", FirmwareVersion.Minor),
-                    new XAttribute("Label", FirmwareVersionLabel),
+                    FirmwareVersionLabel != null ? new XAttribute("Label", FirmwareVersionLabel) : null,
                     new XAttribute("ReleaseDate", ReleaseDate.ToString("u"))));
         }
 
