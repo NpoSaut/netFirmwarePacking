@@ -11,7 +11,7 @@ namespace FirmwarePacking
     public class FirmwarePackage
     {
         /// <summary>Текущая версия формата упаковщика</summary>
-        public const int Format_ActualVersion = 2;
+        public const int Format_ActualVersion = 3;
         /// <summary>Самая старая версия упаковщика, совместимая с текущим форматом</summary>
         public const int Format_CompatibleVersion = 1;
         /// <summary>Текущая версия формата упаковки, совместимая с данной библиотекой</summary>
