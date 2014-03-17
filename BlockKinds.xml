@@ -13,8 +13,14 @@
   <block id="23" name="ВЫВОД" channels="2">
     <modification id="1" name="Базовая" device="at90can128" />
   </block>
-  <block id="10" name="Монитор-5" channels="1" >
+  <block id="10" name="Монитор-5" channels="1">
     <module id="1" name="Индикатор" />
     <modification id="1" name="Базовая" device="win32" />
+  </block>
+  <block id="30" name="Монитор-КХ" channels="1">
+    <module id="1" name="Индикатор" />
+    <module id="2" name="Программа ЭК" />
+    <module id="3" name="Карта GPS" />
+    <modification id="1" name="Базовая" device="mini100" />
   </block>
 </index>
