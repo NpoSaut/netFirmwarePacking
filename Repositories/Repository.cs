@@ -8,7 +8,7 @@ namespace FirmwarePacking.Repositories
     /// <summary>
     /// Представляет абстрактную модель репозитория с прошивками
     /// </summary>
-    public abstract class Repository
+    public abstract class Repository : IRepository
     {
         public abstract IList<FirmwarePackage> Packages { get; }
 
