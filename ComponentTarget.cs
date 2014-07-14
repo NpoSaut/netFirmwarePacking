@@ -4,7 +4,7 @@ using System.Xml.Linq;
 namespace FirmwarePacking
 {
     /// <summary>Информация о модуле назначения прошивки</summary>
-    public class ComponentTarget
+    public class ComponentTarget : IEquatable<ComponentTarget>
     {
         public ComponentTarget() { }
 
@@ -57,33 +57,41 @@ namespace FirmwarePacking
 
         public override string ToString() { return string.Format("Cell={0}[{1}]/{2} Module={3}", CellId, CellModification, Channel, Module); }
 
+        #region Equality
 
-        public static bool operator ==(ComponentTarget a, ComponentTarget b)
+        /// <summary>Указывает, равен ли текущий объект другому объекту того же типа.</summary>
+        /// <returns>true, если текущий объект равен параметру <paramref name="other" />, в противном случае — false.</returns>
+        /// <param name="other">Объект, который требуется сравнить с данным объектом.</param>
+        public bool Equals(ComponentTarget other)
         {
-            if (object.ReferenceEquals(a, b)) return true;
-            else if (object.ReferenceEquals(a, null) || object.ReferenceEquals(b, null)) return false;
-            else return a.Equals(b);
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return CellId == other.CellId && CellModification == other.CellModification && Channel == other.Channel && Module == other.Module;
         }
-        public static bool operator !=(ComponentTarget a, ComponentTarget b) { return !(a == b); }
 
         public override bool Equals(object obj)
         {
-            if (obj == null) return false;
-            else return Equals(obj as ComponentTarget);
-        }
-        public bool Equals(ComponentTarget t)
-        {
-            if (t == null) return false;
-            else return
-                t.CellId == this.CellId &&
-                t.CellModification == this.CellModification &&
-                t.Module == this.Module &&
-                t.Channel == this.Channel;
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals((ComponentTarget)obj);
         }
 
         public override int GetHashCode()
         {
-            return ToString().GetHashCode();
+            unchecked
+            {
+                int hashCode = CellId;
+                hashCode = (hashCode * 397) ^ CellModification;
+                hashCode = (hashCode * 397) ^ Channel;
+                hashCode = (hashCode * 397) ^ Module;
+                return hashCode;
+            }
         }
+
+        public static bool operator ==(ComponentTarget left, ComponentTarget right) { return Equals(left, right); }
+        public static bool operator !=(ComponentTarget left, ComponentTarget right) { return !Equals(left, right); }
+
+        #endregion
     }
 }
