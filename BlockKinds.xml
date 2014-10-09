@@ -7,6 +7,9 @@
   <block id="21" name="ВДС-КХ" channels="2">
     <modification id="1" name="Базовая" device="at90can128" />
   </block>
+  <block id="24" name="ВДС" channels="2">
+    <modification id="1" name="Базовая" device="at90can128" />
+  </block>
   <block id="22" name="ВЫВОД-КХ" channels="2">
     <modification id="1" name="Базовая" device="at90can128" />
   </block>
@@ -16,6 +19,10 @@
   <block id="10" name="Монитор-5" channels="1">
     <module id="1" name="Индикатор" />
     <modification id="1" name="Базовая" device="win32" />
+  </block>
+  <block id="24" name="ШЛЮЗ-CAN" channels="2">
+    <modification id="1" name="Базовая" device="at91sam7a3" />
+    <modification id="2" name="STM32" device="stm32f4" />
   </block>
   <block id="30" name="Монитор-КХ" channels="1">
     <module id="1" name="Индикатор" />
