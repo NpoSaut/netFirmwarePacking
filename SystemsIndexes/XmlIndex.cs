@@ -36,7 +36,8 @@ namespace FirmwarePacking.SystemsIndexes
                                     new ModificationKind()
                                     {
                                         Id = (int)XModule.Attribute("id"),
-                                        Name = (String)XModule.Attribute("name")
+                                        Name = (String)XModule.Attribute("name"),
+                                        DeviceName = (String)XModule.Attribute("device")
                                     }).ToList()
                             }).ToList());
         }
