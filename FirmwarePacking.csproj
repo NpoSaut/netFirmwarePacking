@@ -52,6 +52,7 @@
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="SystemsIndexes\BlockKind.cs" />
+    <Compile Include="SystemsIndexes\DeviceKind.cs" />
     <Compile Include="SystemsIndexes\IIndex.cs" />
     <Compile Include="SystemsIndexes\IIndexHelper.cs" />
     <Compile Include="SystemsIndexes\Index.cs" />

@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <index>
+  <device name="at90can128" />
+  <device name="at90can64" />
+  <device name="win32" />
+  <device name="mini100" />
+  <device name="at91sam7a3" />
+  <device name="stm32f4" />
   <block id="20" name="БС-ДПС" channels="2">
     <modification id="1" name="128" device="at90can128" />
     <modification id="2" name="64" device="at90can64" />

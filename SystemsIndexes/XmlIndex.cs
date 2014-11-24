@@ -18,6 +18,12 @@ namespace FirmwarePacking.SystemsIndexes
         { }
         public XmlIndex(XElement XRoot)
         {
+            var devices = XRoot.Elements("device")
+                               .Select(XDevice => new DeviceKind(
+                                                      (String)XDevice.Attribute("name"),
+                                                      XDevice.Attributes().ToDictionary(a => a.Name.LocalName, a => (string)a)))
+                               .ToDictionary(d => d.Name);
+
             _Blocks =
                 new ReadOnlyCollection<BlockKind>(
                 XRoot.Elements("block").Select(XBlock =>
@@ -37,7 +43,7 @@ namespace FirmwarePacking.SystemsIndexes
                                     {
                                         Id = (int)XModule.Attribute("id"),
                                         Name = (String)XModule.Attribute("name"),
-                                        DeviceName = (String)XModule.Attribute("device")
+                                        Device = devices[(String)XModule.Attribute("device")]
                                     }).ToList()
                             }).ToList());
         }
