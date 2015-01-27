@@ -40,7 +40,7 @@
     <module id="254" name="Загрузчик" />
     <modification id="1" name="Базовая" device="mini100" />
   </block>
-  <block id="30" name="Монитор БЛОК-М" channels="1">
+  <block id="31" name="Монитор БЛОК-М" channels="1">
     <module id="1" name="Индикатор" />
   </block>
 </index>
