@@ -28,6 +28,9 @@
     <modification id="1" name="БЛОК" device="at91sam7a3" />
     <modification id="2" name="САУТ" device="at91sam7a3" />
   </block>
+  <block id="27" name="БИЛ-ИП" channels="1">
+    <modification id="1" name="Базовая" device="at90can128" />
+  </block>
   <block id="30" name="Монитор-КХ" channels="1">
     <module id="1" name="Индикатор" />
     <module id="2" name="Программа ЭК" />
@@ -36,5 +39,8 @@
     <module id="253" name="Логи" />
     <module id="254" name="Загрузчик" />
     <modification id="1" name="Базовая" device="mini100" />
+  </block>
+  <block id="30" name="Монитор БЛОК-М" channels="1">
+    <module id="1" name="Индикатор" />
   </block>
 </index>
