@@ -17,7 +17,7 @@ namespace FirmwarePacking.SystemsIndexes
 
         public string GetCellName(int CellId)
         {
-            return _index.Blocks.Where(b => b.Id == CellId).Select(b => b.Name).DefaultIfEmpty("Неизвестная ячейка").First();
+            return _index.Blocks.Where(b => b.Id == CellId).Select(b => b.Name).DefaultIfEmpty(String.Format("Неизвестная ячейка (#{0})", CellId)).First();
         }
 
         public string GetModuleName(int CellId, int ModuleId)
