@@ -7,13 +7,13 @@ namespace FirmwarePacking.Repositories
     public abstract class Repository : IRepository
     {
         /// <summary>Список всех пакетов в репозитории</summary>
-        public abstract IList<FirmwarePackage> Packages { get; }
+        public abstract IEnumerable<IRepositoryElement> Packages { get; }
 
         /// <summary>Находит пакет прошивки, содержащий компоненты для всех указанных целей</summary>
         /// <param name="Targets">Цели прошивки</param>
-        public virtual IEnumerable<FirmwarePackage> GetPackagesForTargets(IList<ComponentTarget> Targets)
+        public virtual IEnumerable<IRepositoryElement> GetPackagesForTargets(ICollection<ComponentTarget> Targets)
         {
-            return Packages.Where(p => Targets.All(t => p.Components.SelectMany(c => c.Targets).Contains(t)));
+            return Packages.Where(p => Targets.All(t => p.Targets.Contains(t)));
         }
     }
 }

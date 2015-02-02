@@ -6,11 +6,11 @@ namespace FirmwarePacking.Repositories
     public interface IRepository
     {
         /// <summary>Список всех пакетов в репозитории</summary>
-        IList<FirmwarePackage> Packages { get; }
+        IEnumerable<IRepositoryElement> Packages { get; }
 
         /// <summary>Находит пакет прошивки, содержащий компоненты для всех указанных целей</summary>
         /// <param name="Targets">Цели прошивки</param>
-        IEnumerable<FirmwarePackage> GetPackagesForTargets(IList<ComponentTarget> Targets);
+        IEnumerable<IRepositoryElement> GetPackagesForTargets(ICollection<ComponentTarget> Targets);
     }
 
     /// <summary>Содержит методы расширения для работы с репозиторием</summary>
@@ -19,7 +19,7 @@ namespace FirmwarePacking.Repositories
         /// <summary>Находит пакет прошивки, содержащий компоненты для всех указанных целей</summary>
         /// <param name="Repository">Репозиторий для поиска</param>
         /// <param name="Targets">Цели прошивки</param>
-        public static IEnumerable<FirmwarePackage> GetPackagesForTargets(this IRepository Repository, params ComponentTarget[] Targets)
+        public static IEnumerable<IRepositoryElement> GetPackagesForTargets(this IRepository Repository, params ComponentTarget[] Targets)
         {
             return Repository.GetPackagesForTargets(Targets);
         }
