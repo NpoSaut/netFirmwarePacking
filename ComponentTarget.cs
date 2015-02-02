@@ -8,7 +8,7 @@ namespace FirmwarePacking
     {
         public ComponentTarget() { }
 
-        public ComponentTarget(int SystemId, int CellId, int CellModification, int Channel, int Module)
+        public ComponentTarget(int CellId, int CellModification, int Channel, int Module)
             : this()
         {
             this.CellId = CellId;
