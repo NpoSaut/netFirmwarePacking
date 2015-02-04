@@ -1,17 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 
 namespace FirmwarePacking
 {
-    /// <summary>
-    /// Информация о пакете с ПО
-    /// </summary>
+    /// <summary>Информация о пакете с ПО</summary>
     public class PackageInformation
     {
         private string _firmwareVersionLabel;
+
+        public PackageInformation() { }
+
+        /// <summary>Создаёт описание прошивки</summary>
+        /// <param name="FirmwareVersion">Версия прошивки</param>
+        /// <param name="FirmwareVersionLabel">Метка версии прошивки</param>
+        /// <param name="ReleaseDate">Дата выпуска прошивки</param>
+        public PackageInformation(Version FirmwareVersion, string FirmwareVersionLabel, DateTime ReleaseDate)
+            : this()
+        {
+            this.FirmwareVersion = FirmwareVersion;
+            _firmwareVersionLabel = FirmwareVersionLabel;
+            this.ReleaseDate = ReleaseDate;
+        }
+
+        public PackageInformation(XElement XInformation)
+            : this()
+        {
+            XElement xVersionInfo = XInformation.Element("Version");
+            FirmwareVersion = new Version((int)xVersionInfo.Attribute("Major"), (int?)xVersionInfo.Attribute("Minor") ?? 0);
+            FirmwareVersionLabel = (String)xVersionInfo.Attribute("Label");
+            ReleaseDate = (DateTime)xVersionInfo.Attribute("ReleaseDate");
+        }
 
         /// <summary>Версия прошивки</summary>
         public Version FirmwareVersion { get; set; }
@@ -30,26 +48,14 @@ namespace FirmwarePacking
         /// <summary>Дата релиза прошивки</summary>
         public DateTime ReleaseDate { get; set; }
 
-        public PackageInformation() { }
-        public PackageInformation(XElement XInformation)
-            : this()
-        {
-            var xVersionInfo = XInformation.Element("Version");
-            FirmwareVersion = new Version(
-                major: (int)xVersionInfo.Attribute("Major"),
-                minor: (int?)xVersionInfo.Attribute("Minor") ?? 0);
-            FirmwareVersionLabel = (String)xVersionInfo.Attribute("Label");
-            ReleaseDate = (DateTime)xVersionInfo.Attribute("ReleaseDate");
-        }
-
         public XElement ToXElement(String ElementName = "FirmwareInformation")
         {
             return new XElement(ElementName,
-                new XElement("Version",
-                    new XAttribute("Major", FirmwareVersion.Major),
-                    new XAttribute("Minor", FirmwareVersion.Minor),
-                    FirmwareVersionLabel != null ? new XAttribute("Label", FirmwareVersionLabel) : null,
-                    new XAttribute("ReleaseDate", ReleaseDate.ToString("u"))));
+                                new XElement("Version",
+                                             new XAttribute("Major", FirmwareVersion.Major),
+                                             new XAttribute("Minor", FirmwareVersion.Minor),
+                                             FirmwareVersionLabel != null ? new XAttribute("Label", FirmwareVersionLabel) : null,
+                                             new XAttribute("ReleaseDate", ReleaseDate.ToString("u"))));
         }
 
         public static explicit operator XElement(PackageInformation pi) { return pi.ToXElement(); }
