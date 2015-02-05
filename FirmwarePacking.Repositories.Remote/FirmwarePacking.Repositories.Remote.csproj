@@ -32,6 +32,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,6 +42,61 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoteRepository.cs" />
+    <Compile Include="Service References\SautRepoApi\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FirmwarePacking\FirmwarePacking.csproj">
+      <Project>{ACAFB9B6-F2F8-4B22-8E8A-0C453FBF71B6}</Project>
+      <Name>FirmwarePacking</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\SautRepoApi\FirmwarePacking.Repositories.Remote.SautRepoApi.PackageDescription.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SautRepoApi\SfpRepositoryService.wsdl" />
+    <None Include="Service References\SautRepoApi\SfpRepositoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SautRepoApi\SfpRepositoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SautRepoApi\SfpRepositoryService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SautRepoApi\SfpRepositoryService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SautRepoApi\SfpRepositoryService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SautRepoApi\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SautRepoApi\SfpRepositoryService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SautRepoApi\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SautRepoApi\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SautRepoApi\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

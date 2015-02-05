@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0eb9838f-f3bf-4f41-9a1d-7eba3154bc1b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://repo.nposaut.ru/api/SfpRepositoryService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SfpRepositoryService.xsd" MetadataType="Schema" ID="7c6048b6-ef81-4f06-8e75-b5de20459d64" SourceId="1" SourceUrl="http://repo/Api/SfpRepositoryService.svc?xsd=xsd4" />
+    <MetadataFile FileName="SfpRepositoryService1.xsd" MetadataType="Schema" ID="88a61c13-121a-4df4-8fc9-a26b5b2d3925" SourceId="1" SourceUrl="http://repo/Api/SfpRepositoryService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SfpRepositoryService2.xsd" MetadataType="Schema" ID="00c5d40a-a489-418f-a776-5eb51ee6225f" SourceId="1" SourceUrl="http://repo/Api/SfpRepositoryService.svc?xsd=xsd3" />
+    <MetadataFile FileName="SfpRepositoryService3.xsd" MetadataType="Schema" ID="3a1683ad-5873-489c-a754-1b422630cc48" SourceId="1" SourceUrl="http://repo/Api/SfpRepositoryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SfpRepositoryService4.xsd" MetadataType="Schema" ID="7fd355e3-7513-4f85-b47b-41906ba291ad" SourceId="1" SourceUrl="http://repo/Api/SfpRepositoryService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SfpRepositoryService.wsdl" MetadataType="Wsdl" ID="31befb51-e266-4394-a687-b8551b470607" SourceId="1" SourceUrl="http://repo/Api/SfpRepositoryService.svc?wsdl" />
+    <MetadataFile FileName="SfpRepositoryService.disco" MetadataType="Disco" ID="3de2cb85-efba-4860-8b47-0f2ee3a41d15" SourceId="1" SourceUrl="http://repo/Api/SfpRepositoryService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

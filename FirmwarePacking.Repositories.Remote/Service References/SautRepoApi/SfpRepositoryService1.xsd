@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SautRepo.Api" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SautRepo.Api" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://repo/Api/SfpRepositoryService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/FirmwarePacking" />
+  <xs:complexType name="ArrayOfPackageDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PackageDescription" nillable="true" type="tns:PackageDescription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPackageDescription" nillable="true" type="tns:ArrayOfPackageDescription" />
+  <xs:complexType name="PackageDescription">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/FirmwarePacking" minOccurs="0" name="Information" nillable="true" type="q1:PackageInformation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PackageDescription" nillable="true" type="tns:PackageDescription" />
+</xs:schema>
