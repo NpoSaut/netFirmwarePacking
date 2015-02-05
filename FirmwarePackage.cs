@@ -24,9 +24,10 @@ namespace FirmwarePacking
         public List<FirmwareComponent> Components { get; set; }
 
         public static FirmwarePackage Open(String FileName) { return Open(new FileInfo(FileName)); }
-        public static FirmwarePackage Open(FileInfo File)
+        public static FirmwarePackage Open(FileInfo File) { return Open(File.OpenRead()); }
+        public static FirmwarePackage Open(Stream PackageStream)
         {
-            using (ZipStorer pack = ZipStorer.Open(File.OpenRead(), FileAccess.Read))
+            using (ZipStorer pack = ZipStorer.Open(PackageStream, FileAccess.Read))
             {
                 var files = pack.ReadCentralDir();
                 var index = files.Single(f => f.FilenameInZip == "index.xml");
