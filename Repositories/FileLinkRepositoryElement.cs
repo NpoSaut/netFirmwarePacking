@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace FirmwarePacking.Repositories
 {
@@ -11,15 +13,26 @@ namespace FirmwarePacking.Repositories
         /// <param name="Information">Информация о пакете</param>
         /// <param name="Targets">Цели пакета</param>
         /// <param name="FileName">Путь к файлу</param>
-        public FileLinkRepositoryElement(PackageInformation Information, ICollection<ComponentTarget> Targets, string FileName) : base(Information, Targets)
+        /// <param name="Status">Статус релиза</param>
+        public FileLinkRepositoryElement(PackageInformation Information, ICollection<ComponentTarget> Targets, string FileName, ReleaseStatus Status) : base(Information, Targets, Status)
         {
             _fileName = FileName;
         }
 
-        /// <summary>Производит загрузку пакета прошивки по ссылке</summary>
-        protected override FirmwarePackage LoadPackage()
+        public static FileLinkRepositoryElement Load(FileInfo FileInfo, ReleaseStatus Status = ReleaseStatus.Unknown)
         {
-            return FirmwarePackage.Open(_fileName);
+            FirmwarePackage package = FirmwarePackage.Open(FileInfo);
+            return new FileLinkRepositoryElement(
+                package.Information,
+                package.Components.SelectMany(c => c.Targets).ToList(),
+                FileInfo.FullName,
+                Status);
+        }
+
+        /// <summary>Открывает поток для чтения пакета прошивки</summary>
+        public override Stream GetPackageStream()
+        {
+            return new FileStream(_fileName, FileMode.Open);
         }
     }
 }

@@ -51,11 +51,9 @@
     <Compile Include="Repositories\DirectoryRepository.cs" />
     <Compile Include="Repositories\FileLinkRepositoryElement.cs" />
     <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Repositories\MemoryRepositoryElement.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\IRepositoryElement.cs" />
     <Compile Include="Repositories\LinkRepositoryElement.cs" />
-    <Compile Include="Repositories\StreamLinkRepositoryElement.cs" />
     <Compile Include="SystemsIndexes\BlockKind.cs" />
     <Compile Include="SystemsIndexes\IIndex.cs" />
     <Compile Include="SystemsIndexes\IIndexHelper.cs" />

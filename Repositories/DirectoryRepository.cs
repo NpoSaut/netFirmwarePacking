@@ -8,7 +8,7 @@ namespace FirmwarePacking.Repositories
     /// <summary>Представляет репозиторий, хранилище которого расположено в папке с файлами</summary>
     public class DirectoryRepository : Repository
     {
-        private readonly List<MemoryRepositoryElement> _packages;
+        private readonly List<FileLinkRepositoryElement> _packages;
 
         /// <summary>Создаёт репозиторий по указанному пути</summary>
         /// <param name="RepositoryRootPath">Пусть к репозиторию</param>
@@ -24,9 +24,9 @@ namespace FirmwarePacking.Repositories
             _packages =
                 RepositoryRoot.Exists
                     ? RepositoryRoot.EnumerateFiles("*." + FirmwarePackage.FirmwarePackageExtension)
-                                    .Select(f => new MemoryRepositoryElement(FirmwarePackage.Open(f)))
+                                    .Select(FileLinkRepositoryElement.Load)
                                     .ToList()
-                    : new List<MemoryRepositoryElement>();
+                    : new List<FileLinkRepositoryElement>();
         }
 
         /// <summary>Путь к папке с пользовательскими репозиториями</summary>
