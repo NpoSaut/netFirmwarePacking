@@ -9,7 +9,7 @@ namespace FirmwarePacking.Repositories
         Unknown,
 
         /// <summary>Стабильная версия</summary>
-        Stable,
+        Actual,
 
         /// <summary>Тестовая версия</summary>
         Test,
