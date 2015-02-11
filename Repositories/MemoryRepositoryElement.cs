@@ -9,7 +9,15 @@ namespace FirmwarePacking.Repositories
     public class MemoryRepositoryElement : IRepositoryElement
     {
         private readonly FirmwarePackage _package;
-        public MemoryRepositoryElement(FirmwarePackage Package) { _package = Package; }
+
+        public MemoryRepositoryElement(FirmwarePackage Package, ReleaseStatus Status = ReleaseStatus.Unknown)
+        {
+            _package = Package;
+            this.Status = Status;
+        }
+
+        /// <summary>Статус релиза пакета</summary>
+        public ReleaseStatus Status { get; private set; }
 
         /// <summary>Информация о пакете</summary>
         public PackageInformation Information

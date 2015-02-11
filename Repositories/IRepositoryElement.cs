@@ -2,6 +2,22 @@
 
 namespace FirmwarePacking.Repositories
 {
+    /// <summary>Статус релиза</summary>
+    public enum ReleaseStatus
+    {
+        /// <summary>Статус неизвестен</summary>
+        Unknown,
+
+        /// <summary>Стабильная версия</summary>
+        Stable,
+
+        /// <summary>Тестовая версия</summary>
+        Test,
+
+        /// <summary>Архивная версия</summary>
+        Archive
+    }
+
     /// <summary>Элемент репозитория.</summary>
     /// <remarks>
     ///     Ставится в соответствие пакету прошивки в репозитории и позволяет получить информацию о нём, не загружая его
@@ -9,6 +25,9 @@ namespace FirmwarePacking.Repositories
     /// </remarks>
     public interface IRepositoryElement
     {
+        /// <summary>Статус релиза пакета</summary>
+        ReleaseStatus Status { get; }
+
         /// <summary>Информация о пакете</summary>
         PackageInformation Information { get; }
 
