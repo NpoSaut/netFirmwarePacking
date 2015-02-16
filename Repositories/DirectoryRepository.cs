@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace FirmwarePacking.Repositories
     /// <summary>Представляет репозиторий, хранилище которого расположено в папке с файлами</summary>
     public class DirectoryRepository : Repository
     {
-        private readonly List<MemoryRepositoryElement> _packages;
+        private readonly ConcurrentDictionary<String, IRepositoryElement> _elementsCache;
 
         /// <summary>Создаёт репозиторий по указанному пути</summary>
         /// <param name="RepositoryRootPath">Пусть к репозиторию</param>
@@ -20,13 +21,7 @@ namespace FirmwarePacking.Repositories
         public DirectoryRepository(DirectoryInfo RepositoryRoot)
         {
             this.RepositoryRoot = RepositoryRoot;
-
-            _packages =
-                RepositoryRoot.Exists
-                    ? RepositoryRoot.EnumerateFiles("*." + FirmwarePackage.FirmwarePackageExtension, SearchOption.AllDirectories)
-                                    .Select(f => new MemoryRepositoryElement(FirmwarePackage.Open(f)))
-                                    .ToList()
-                    : new List<MemoryRepositoryElement>();
+            _elementsCache = new ConcurrentDictionary<string, IRepositoryElement>();
         }
 
         /// <summary>Путь к папке с пользовательскими репозиториями</summary>
@@ -46,7 +41,24 @@ namespace FirmwarePacking.Repositories
 
         public override IEnumerable<IRepositoryElement> Packages
         {
-            get { return _packages; }
+            get
+            {
+                return !RepositoryRoot.Exists
+                           ? Enumerable.Empty<IRepositoryElement>()
+                           : RepositoryRoot.EnumerateFiles("*." + FirmwarePackage.FirmwarePackageExtension, SearchOption.AllDirectories)
+                                           .Select(LoadPackage);
+            }
+        }
+
+        private IRepositoryElement LoadPackage(FileInfo File)
+        {
+            IRepositoryElement result;
+            if (!_elementsCache.TryGetValue(File.FullName, out result))
+            {
+                result = new MemoryRepositoryElement(FirmwarePackage.Open(File));
+                _elementsCache.TryAdd(File.FullName, result);
+            }
+            return result;
         }
     }
 }
