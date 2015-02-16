@@ -23,7 +23,7 @@ namespace FirmwarePacking.Repositories
 
             _packages =
                 RepositoryRoot.Exists
-                    ? RepositoryRoot.EnumerateFiles("*." + FirmwarePackage.FirmwarePackageExtension)
+                    ? RepositoryRoot.EnumerateFiles("*." + FirmwarePackage.FirmwarePackageExtension, SearchOption.AllDirectories)
                                     .Select(f => new MemoryRepositoryElement(FirmwarePackage.Open(f)))
                                     .ToList()
                     : new List<MemoryRepositoryElement>();
