@@ -1,106 +1,86 @@
-﻿using System;
-using FirmwarePacking.Annotations;
+﻿using System.Linq;
 
 namespace FirmwarePacking.SystemsIndexes
 {
-    public interface IIndexHelper
+    public class IndexHelper : IIndexHelper
     {
-        #region Поиск имён
+        private readonly IIndex _index;
+        public IndexHelper(IIndex Index) { _index = Index; }
 
         /// <summary>Находит имя ячейки</summary>
         /// <param name="CellId">Идентификатор ячейки</param>
-        string GetCellName(int CellId);
+        public string GetCellName(int CellId) { return GetCell(CellId).Name; }
 
         /// <summary>Находит имя программного модуля</summary>
         /// <param name="CellId">Идентификатор ячейки</param>
         /// <param name="ModuleId">Идентификатор программного модуля</param>
-        string GetModuleName(int CellId, int ModuleId);
+        public string GetModuleName(int CellId, int ModuleId) { return GetModule(CellId, ModuleId).Name; }
 
         /// <summary>Находит имя модификации ячейки</summary>
         /// <param name="CellId">Идентификатор ячейки</param>
         /// <param name="ModificationId">Идентификатор модификации ячейки</param>
-        string GetModificationName(int CellId, int ModificationId);
-
-        #endregion
-
-        #region Поиск идентификаторов
+        public string GetModificationName(int CellId, int ModificationId) { return GetModification(CellId, ModificationId).Name; }
 
         /// <summary>Находит идентификатор ячейки</summary>
         /// <param name="CellName">Название ячейки</param>
-        int GetCellId(string CellName);
+        public int GetCellId(string CellName) { return GetCell(CellName).Id; }
 
         /// <summary>Находит идентификатор программного модуля</summary>
         /// <param name="CellId">Название ячейки</param>
         /// <param name="ModuleName">Название модуля</param>
-        int GetModuleId(int CellId, string ModuleName);
+        public int GetModuleId(int CellId, string ModuleName) { return GetModule(GetCell(CellId), ModuleName).Id; }
 
         /// <summary>Находит идентификатор модификации ячейки</summary>
         /// <param name="CellId">Название ячейки</param>
         /// <param name="ModificationName">Название модуля</param>
-        int GetModificationId(int CellId, string ModificationName);
-
-        #endregion
-
-        #region Поиск моделей
+        public int GetModificationId(int CellId, string ModificationName) { return GetModification(GetCell(CellId), ModificationName).Id; }
 
         /// <summary>Находит модель типа ячейки</summary>
         /// <param name="CellId">Идентификатор типа ячейки</param>
-        [NotNull]
-        BlockKind GetCell(int CellId);
+        public BlockKind GetCell(int CellId) { return _index.Blocks.Single(b => b.Id == CellId); }
 
         /// <summary>Находит модель типа ячейки</summary>
         /// <param name="CellName">Имя ячейки</param>
-        [NotNull]
-        BlockKind GetCell(string CellName);
+        public BlockKind GetCell(string CellName) { return _index.Blocks.Single(b => b.Name == CellName); }
 
         /// <summary>Находит модель модификации ячейки</summary>
         /// <param name="Cell">Модель ячейки</param>
         /// <param name="ModificationId">Идентификатор модификации</param>
-        [NotNull]
-        ModificationKind GetModification([NotNull] BlockKind Cell, int ModificationId);
+        public ModificationKind GetModification(BlockKind Cell, int ModificationId) { return Cell.Modifications.Single(m => m.Id == ModificationId); }
 
         /// <summary>Находит модель модификации ячейки</summary>
         /// <param name="Cell">Модель ячейки</param>
         /// <param name="ModificationName">Название модификации</param>
-        [NotNull]
-        ModificationKind GetModification([NotNull] BlockKind Cell, string ModificationName);
+        public ModificationKind GetModification(BlockKind Cell, string ModificationName) { return Cell.Modifications.Single(m => m.Name == ModificationName); }
 
         /// <summary>Находит модель модификации ячейки</summary>
         /// <param name="CellId">Идентификатор типа ячейки</param>
         /// <param name="ModificationId">Идентификатор модификации</param>
-        [NotNull]
-        ModificationKind GetModification(int CellId, int ModificationId);
+        public ModificationKind GetModification(int CellId, int ModificationId) { return GetModification(GetCell(CellId), ModificationId); }
 
         /// <summary>Находит модель модификации ячейки</summary>
         /// <param name="CellName">Название ячейки</param>
         /// <param name="ModificationName">Название модификации</param>
-        [NotNull]
-        ModificationKind GetModification(String CellName, string ModificationName);
+        public ModificationKind GetModification(string CellName, string ModificationName) { return GetModification(GetCell(CellName), ModificationName); }
 
         /// <summary>Находит модель программного модуля</summary>
         /// <param name="Cell">Модель ячейки</param>
         /// <param name="ModuleId">Идентификатор программного модуля</param>
-        [NotNull]
-        ModuleKind GetModule([NotNull] BlockKind Cell, int ModuleId);
+        public ModuleKind GetModule(BlockKind Cell, int ModuleId) { return Cell.Modules.Single(m => m.Id == ModuleId); }
 
         /// <summary>Находит модель программного модуля</summary>
         /// <param name="Cell">Модель ячейки</param>
         /// <param name="ModuleName">Идентификатор программного модуля</param>
-        [NotNull]
-        ModuleKind GetModule([NotNull] BlockKind Cell, string ModuleName);
+        public ModuleKind GetModule(BlockKind Cell, string ModuleName) { return Cell.Modules.Single(m => m.Name == ModuleName); }
 
         /// <summary>Находит модель программного модуля</summary>
         /// <param name="CellId">Идентификатор ячейки</param>
         /// <param name="ModuleId">Идентификатор программного модуля</param>
-        [NotNull]
-        ModuleKind GetModule(int CellId, int ModuleId);
+        public ModuleKind GetModule(int CellId, int ModuleId) { return GetModule(GetCell(CellId), ModuleId); }
 
         /// <summary>Находит модель программного модуля</summary>
         /// <param name="CellName">Имя ячейки</param>
         /// <param name="ModuleName">Имя программного модуля</param>
-        [NotNull]
-        ModuleKind GetModule(String CellName, string ModuleName);
-
-        #endregion
+        public ModuleKind GetModule(string CellName, string ModuleName) { return GetModule(GetCell(CellName), ModuleName); }
     }
 }
