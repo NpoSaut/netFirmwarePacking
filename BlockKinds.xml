@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <index>
   <block id="20" name="БС-ДПС" channels="2">
-    <modification id="1" name="128" device="at90can128" />
-    <modification id="2" name="64" device="at90can64" />
+    <modification id="1" name="128кб" device="at90can128" />
+    <modification id="2" name="64кб" device="at90can64" />
   </block>
   <block id="21" name="ВДС-КХ" channels="2">
     <modification id="1" name="Базовая" device="at90can128" />
