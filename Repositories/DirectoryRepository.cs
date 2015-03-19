@@ -1,28 +1,69 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 
 namespace FirmwarePacking.Repositories
 {
     /// <summary>Представляет репозиторий, хранилище которого расположено в папке с файлами</summary>
-    public class DirectoryRepository : Repository
+    public class DirectoryRepository : RepositoryBase
     {
-        private readonly ConcurrentDictionary<String, IRepositoryElement> _elementsCache;
+        protected const string PackageSearchPattern = "*." + FirmwarePackage.FirmwarePackageExtension;
+
+        private readonly object _initializationLocker = new object();
+
+        protected IDictionary<String, IRepositoryElement> ElementsCache;
+        protected IList<IRepositoryElement> PackagesCollection;
+        private bool _initialized;
+        private ICollection<IRepositoryElement> _packagesRoc;
 
         /// <summary>Создаёт репозиторий по указанному пути</summary>
         /// <param name="RepositoryRootPath">Пусть к репозиторию</param>
-        public DirectoryRepository(String RepositoryRootPath)
-            : this(new DirectoryInfo(RepositoryRootPath)) { }
+        public DirectoryRepository(String RepositoryRootPath) { RepositoryRoot = new DirectoryInfo(RepositoryRootPath); }
 
-        /// <summary>Создаёт репозиторий в указанной директори</summary>
-        /// <param name="RepositoryRoot">Директория с репозиторием</param>
-        public DirectoryRepository(DirectoryInfo RepositoryRoot)
+        /// <summary>Папка расположения репозитория</summary>
+        public DirectoryInfo RepositoryRoot { get; private set; }
+
+        public override ICollection<IRepositoryElement> Packages
         {
-            this.RepositoryRoot = RepositoryRoot;
-            _elementsCache = new ConcurrentDictionary<string, IRepositoryElement>();
+            get
+            {
+                if (!_initialized)
+                    Initialize();
+                return _packagesRoc;
+            }
         }
+
+        protected void Initialize()
+        {
+            lock (_initializationLocker)
+            {
+                if (_initialized) return;
+                UnderlockedInitialize();
+            }
+        }
+
+        protected virtual void UnderlockedInitialize()
+        {
+            ElementsCache = LoadPackages();
+            PackagesCollection = ElementsCache.Values.ToList();
+            _packagesRoc = new ReadOnlyCollection<IRepositoryElement>(PackagesCollection);
+            _initialized = true;
+        }
+
+        private IDictionary<string, IRepositoryElement> LoadPackages()
+        {
+            if (!RepositoryRoot.Exists)
+                return new Dictionary<string, IRepositoryElement>();
+
+            return RepositoryRoot.EnumerateFiles(PackageSearchPattern, SearchOption.AllDirectories)
+                                 .ToDictionary(f => f.FullName, f => LoadElement(f.FullName));
+        }
+
+        protected IRepositoryElement LoadElement(String FileName) { return new MemoryRepositoryElement(FirmwarePackage.Open(FileName)); }
+
+        #region Static Fileds
 
         /// <summary>Путь к папке с пользовательскими репозиториями</summary>
         public static String UserRepositoryDirectory
@@ -36,29 +77,6 @@ namespace FirmwarePacking.Repositories
             get { return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Repository"); }
         }
 
-        /// <summary>Папка расположения репозитория</summary>
-        public DirectoryInfo RepositoryRoot { get; private set; }
-
-        public override IEnumerable<IRepositoryElement> Packages
-        {
-            get
-            {
-                return !RepositoryRoot.Exists
-                           ? Enumerable.Empty<IRepositoryElement>()
-                           : RepositoryRoot.EnumerateFiles("*." + FirmwarePackage.FirmwarePackageExtension, SearchOption.AllDirectories)
-                                           .Select(LoadPackage);
-            }
-        }
-
-        private IRepositoryElement LoadPackage(FileInfo File)
-        {
-            IRepositoryElement result;
-            if (!_elementsCache.TryGetValue(File.FullName, out result))
-            {
-                result = new MemoryRepositoryElement(FirmwarePackage.Open(File));
-                _elementsCache.TryAdd(File.FullName, result);
-            }
-            return result;
-        }
+        #endregion
     }
 }
