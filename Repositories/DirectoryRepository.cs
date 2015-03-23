@@ -55,7 +55,7 @@ namespace FirmwarePacking.Repositories
         private IDictionary<string, IRepositoryElement> LoadPackages()
         {
             if (!RepositoryRoot.Exists)
-                return new Dictionary<string, IRepositoryElement>();
+                RepositoryRoot.Create();
 
             return RepositoryRoot.EnumerateFiles(PackageSearchPattern, SearchOption.AllDirectories)
                                  .ToDictionary(f => f.FullName, f => LoadElement(f.FullName));
