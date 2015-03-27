@@ -20,7 +20,12 @@ namespace FirmwarePacking.Repositories
 
         /// <summary>Создаёт репозиторий по указанному пути</summary>
         /// <param name="RepositoryRootPath">Пусть к репозиторию</param>
-        public DirectoryRepository(String RepositoryRootPath) { RepositoryRoot = new DirectoryInfo(RepositoryRootPath); }
+        public DirectoryRepository(String RepositoryRootPath)
+        {
+            RepositoryRoot = new DirectoryInfo(RepositoryRootPath);
+            if (!RepositoryRoot.Exists)
+                RepositoryRoot.Create();
+        }
 
         /// <summary>Папка расположения репозитория</summary>
         public DirectoryInfo RepositoryRoot { get; private set; }
@@ -54,9 +59,6 @@ namespace FirmwarePacking.Repositories
 
         private IDictionary<string, IRepositoryElement> LoadPackages()
         {
-            if (!RepositoryRoot.Exists)
-                RepositoryRoot.Create();
-
             return RepositoryRoot.EnumerateFiles(PackageSearchPattern, SearchOption.AllDirectories)
                                  .ToDictionary(f => f.FullName, f => LoadElement(f.FullName));
         }
