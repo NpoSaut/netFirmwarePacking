@@ -24,9 +24,8 @@
     <modification id="1" name="Базовая" device="at91sam7a3" />
     <modification id="2" name="STM32" device="stm32f4" />
   </block>
-  <block id="26" name="БС-СН" channels="1">
-    <modification id="1" name="БЛОК" device="at91sam7a3" />
-    <modification id="2" name="САУТ" device="at91sam7a3" />
+  <block id="26" name="БС-СН БЛОК" channels="1">
+    <modification id="1" name="Базовая" device="at91sam7a3" />
   </block>
   <block id="27" name="БИЛ-ИП" channels="1">
     <modification id="1" name="Базовая" device="at90can128" />
