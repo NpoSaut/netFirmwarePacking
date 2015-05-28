@@ -30,6 +30,9 @@
   <block id="27" name="БИЛ-ИП" channels="1">
     <modification id="1" name="Базовая" device="at90can128" />
   </block>
+  <block id="28" name="ВВД" channels="2">
+    <modification id="1" name="Базовая" device="stm32f4" />
+  </block>
   <block id="30" name="Монитор-КХ" channels="1">
     <module id="1" name="Индикатор" />
     <module id="2" name="Программа ЭК" />
