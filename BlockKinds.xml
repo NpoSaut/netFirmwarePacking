@@ -21,8 +21,8 @@
     <modification id="1" name="Базовая" device="win32" />
   </block>
   <block id="25" name="ШЛЮЗ-CAN" channels="2">
-    <modification id="1" name="Базовая" device="at91sam7a3" />
-    <modification id="2" name="STM32" device="stm32f4" />
+    <modification id="1" name="Atmel" device="at91sam7a3" />
+    <modification id="2" name="Миландр" device="mdr32f9" />
   </block>
   <block id="26" name="БС-СН БЛОК" channels="1">
     <modification id="1" name="Базовая" device="at91sam7a3" />
