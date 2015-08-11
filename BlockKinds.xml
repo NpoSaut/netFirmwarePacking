@@ -45,4 +45,31 @@
   <block id="31" name="Монитор БЛОК-М" channels="1">
     <module id="1" name="Индикатор" />
   </block>
+  
+  <!-- Мастер-ячейки БС-КПА БЛОК -->
+  <block id="1000" name="БС-КПА М-IN" channels="1">
+    <modification id="1" name="Базовая" device="at90can128" />
+  </block>
+  <block id="1001" name="БС-КПА М-OUT" channels="1">
+    <modification id="1" name="Базовая" device="at90can128" />
+  </block>
+  <block id="1002" name="БС-КПА УКАС" channels="1">
+    <modification id="1" name="Базовая" device="at90can128" />
+  </block>
+  <block id="1003" name="БС-КПА PROV" channels="1">
+    <modification id="1" name="Базовая" device="at90can128" />
+  </block>
+  <block id="1004" name="БС-КПА ЯК-УК" channels="1">
+    <modification id="1" name="Базовая" device="at90can128" />
+  </block>
+  <block id="1005" name="БС-КПА МФ1" channels="1">
+    <modification id="1" name="Базовая" device="at90can128" />
+  </block>
+  <block id="1006" name="БС-КПА Ист.пит.1" channels="1">
+    <modification id="1" name="Базовая" device="at90can128" />
+  </block>
+  <block id="1007" name="БС-КПА Ист.пит.2" channels="1">
+    <modification id="1" name="Базовая" device="at90can128" />
+  </block>
+  
 </index>
