@@ -47,10 +47,10 @@
   </block>
   
   <!-- Мастер-ячейки БС-КПА БЛОК -->
-  <block id="1000" name="БС-КПА М-IN" channels="1">
+  <block id="1000" name="БС-КПА М-IN" channels="2">
     <modification id="1" name="Базовая" device="at90can128" />
   </block>
-  <block id="1001" name="БС-КПА М-OUT" channels="1">
+  <block id="1001" name="БС-КПА М-OUT" channels="2">
     <modification id="1" name="Базовая" device="at90can128" />
   </block>
   <block id="1002" name="БС-КПА УКАС" channels="1">
