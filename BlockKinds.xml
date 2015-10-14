@@ -36,14 +36,16 @@
   <block id="30" name="Монитор-КХ" channels="1">
     <module id="1" name="Индикатор" />
     <module id="2" name="Программа ЭК" />
-    <module id="3" name="Карта GPS" />
-    <module id="252" name="Данные" />
-    <module id="253" name="Логи" />
     <module id="254" name="Загрузчик" />
     <modification id="1" name="Базовая" device="mini100" />
   </block>
-  <block id="31" name="Монитор БЛОК-М" channels="1">
+  <block id="31" name="Монитор-7" channels="1">
     <module id="1" name="Индикатор" />
+    <module id="254" name="Загрузчик" />
+  </block>
+  <block id="31" name="УЛМИ" channels="1">
+    <module id="1" name="Индикатор" />
+    <module id="254" name="Загрузчик" />
   </block>
   
   <!-- Мастер-ячейки БС-КПА БЛОК -->
