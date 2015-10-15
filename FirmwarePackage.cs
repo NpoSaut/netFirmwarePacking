@@ -29,6 +29,7 @@ namespace FirmwarePacking
         {
             using (ZipStorer pack = ZipStorer.Open(PackageStream, FileAccess.Read))
             {
+                pack.EncodeUTF8 = true;
                 var files = pack.ReadCentralDir();
                 var index = files.Single(f => f.FilenameInZip == "index.xml");
                 var ms = new MemoryStream();
@@ -84,6 +85,7 @@ namespace FirmwarePacking
         {
             using (ZipStorer zip = ZipStorer.Create(p, ""))
             {
+                zip.EncodeUTF8 = true;
                 ZipFile(zip, GetIndex(), "index.xml");
                 foreach (var component in Components)
                 {
