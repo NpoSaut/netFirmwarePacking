@@ -43,9 +43,18 @@
     <module id="1" name="Индикатор" />
     <module id="254" name="Загрузчик" />
   </block>
-  <block id="31" name="УЛМИ" channels="1">
+  <block id="32" name="УЛМИ" channels="1">
     <module id="1" name="Индикатор" />
     <module id="254" name="Загрузчик" />
+  </block>
+  <block id="33" name="ТСКБМ-ПК" channels="3">
+    <modification id="1" name="Базовая" device="stm32f4" />
+  </block>
+  <block id="34" name="РС-АЛСН-01" channels="1">
+    <modification id="1" name="Базовая" device="mdr32f9q2i" />
+  </block>
+  <block id="34" name="Модуль ввода - 01" channels="2">
+    <modification id="1" name="Базовая" device="mdr32f9q2i" />
   </block>
   
   <!-- Мастер-ячейки БС-КПА БЛОК -->
