@@ -47,7 +47,7 @@
     <module id="1" name="Индикатор" />
     <module id="254" name="Загрузчик" />
   </block>
-  <block id="33" name="ТСКБМ-ПК" channels="3">
+  <block id="33" name="ТСКБМ-КП" channels="3">
     <modification id="1" name="Базовая" device="stm32f4" />
   </block>
   <block id="34" name="РС-АЛСН-01" channels="1">
