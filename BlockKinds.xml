@@ -53,7 +53,7 @@
   <block id="34" name="РС-АЛСН-01" channels="1">
     <modification id="1" name="Базовая" device="mdr32f9q2i" />
   </block>
-  <block id="34" name="Модуль ввода - 01" channels="2">
+  <block id="35" name="Модуль ввода - 01" channels="2">
     <modification id="1" name="Базовая" device="mdr32f9q2i" />
   </block>
   
