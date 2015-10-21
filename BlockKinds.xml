@@ -22,7 +22,7 @@
   </block>
   <block id="25" name="Шлюз CAN" channels="2">
     <modification id="1" name="Atmel" device="at91sam7a3" config="00140000" />
-    <modification id="2" name="Миландр" device="mdr32f9q2i" config="00050706" board="ShluzCAN-01" unichannel="true" />
+    <modification id="2" name="Миландр" device="mdr32f9q2i" config="00050706" board="CanGateway-01" unichannel="true" />
   </block>
   <block id="26" name="БС-СН БЛОК" channels="1">
     <modification id="1" name="Базовая" device="at91sam7a3" />
@@ -31,7 +31,7 @@
     <modification id="1" name="Базовая" device="at90can128" />
   </block>
   <block id="28" name="ВВД" channels="2">
-    <modification id="1" name="Базовая" device="stm32f4" />
+    <modification id="1" name="Базовая" device="stm32f4" config="00293031" board="STM32F2" />
   </block>
   <block id="30" name="Монитор-КХ" channels="1">
     <modification id="1" name="Базовая" device="mini100" />
