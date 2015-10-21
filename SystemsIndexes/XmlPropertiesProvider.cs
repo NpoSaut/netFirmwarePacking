@@ -10,9 +10,7 @@ namespace FirmwarePacking.SystemsIndexes
 
         public string this[string PropertyName]
         {
-            get { return _element.Attribute(PropertyName).Value; }
+            get { return (String)_element.Attribute(PropertyName); }
         }
-
-        public TValue GetProperty<TValue>(string PropertyName) { return (TValue)Convert.ChangeType(_element.Attribute(PropertyName).Value, typeof (TValue)); }
     }
 }

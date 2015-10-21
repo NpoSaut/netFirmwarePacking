@@ -1,8 +1,10 @@
-﻿namespace FirmwarePacking.SystemsIndexes
+﻿using FirmwarePacking.Annotations;
+
+namespace FirmwarePacking.SystemsIndexes
 {
     public interface ICustomPropertiesProvider
     {
+        [CanBeNull]
         string this[string PropertyName] { get; }
-        TValue GetProperty<TValue>(string PropertyName);
     }
 }
