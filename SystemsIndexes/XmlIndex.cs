@@ -21,25 +21,22 @@ namespace FirmwarePacking.SystemsIndexes
             _Blocks =
                 new ReadOnlyCollection<BlockKind>(
                 XRoot.Elements("block").Select(XBlock =>
-                            new BlockKind()
-                            {
-                                Id = (int)XBlock.Attribute("id"),
-                                Name = (String)XBlock.Attribute("name"),
-                                ChannelsCount = (int)XBlock.Attribute("channels"),
-                                Modules = XBlock.Elements("module").Select(XModule =>
-                                    new ModuleKind()
-                                    {
-                                        Id = (int)XModule.Attribute("id"),
-                                        Name = (String)XModule.Attribute("name")
-                                    }).ToList(),
-                                Modifications = XBlock.Elements("modification").Select(XModule =>
-                                    new ModificationKind()
-                                    {
-                                        Id = (int)XModule.Attribute("id"),
-                                        Name = (String)XModule.Attribute("name"),
-                                        DeviceName = (String)XModule.Attribute("device")
-                                    }).ToList()
-                            }).ToList());
+                            new BlockKind(
+                                (int)XBlock.Attribute("id"),
+                                (String)XBlock.Attribute("name"),
+                                (int)XBlock.Attribute("channels"),
+                                XBlock.Elements("module").Select(XModule =>
+                                    new ModuleKind(
+                                        (int)XModule.Attribute("id"),
+                                        (String)XModule.Attribute("name"))).ToList(),
+                                XBlock.Elements("modification").Select(XModification =>
+                                    new ModificationKind(
+                                        (int)XModification.Attribute("id"),
+                                        (String)XModification.Attribute("name"),
+                                        (String)XModification.Attribute("device"),
+                                        new XmlPropertiesProvider(XModification)))
+                                    .ToList()))
+                            .ToList());
         }
     }
 

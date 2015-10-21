@@ -1,18 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace FirmwarePacking.SystemsIndexes
 {
     public class ModuleKind
     {
-        public int Id { get; set; }
-        public String Name { get; set; }
-
-        public override string ToString()
+        public ModuleKind(int Id, string Name)
         {
-            return string.Format("[{0}] {1}", Id, Name);
+            this.Id = Id;
+            this.Name = Name;
         }
+
+        public int Id { get; private set; }
+        public String Name { get; private set; }
+
+        public override string ToString() { return string.Format("[{0}] {1}", Id, Name); }
     }
 }

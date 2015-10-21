@@ -60,6 +60,7 @@
     <Compile Include="Repositories\LinkRepositoryElement.cs" />
     <Compile Include="Repositories\StreamLinkRepositoryElement.cs" />
     <Compile Include="SystemsIndexes\BlockKind.cs" />
+    <Compile Include="SystemsIndexes\ICustomPropertiesProvider.cs" />
     <Compile Include="SystemsIndexes\IIndex.cs" />
     <Compile Include="SystemsIndexes\IIndexHelper.cs" />
     <Compile Include="SystemsIndexes\Index.cs" />
@@ -67,12 +68,18 @@
     <Compile Include="SystemsIndexes\ModificationKind.cs" />
     <Compile Include="SystemsIndexes\ModuleKind.cs" />
     <Compile Include="SystemsIndexes\XmlIndex.cs" />
+    <Compile Include="SystemsIndexes\XmlPropertiesProvider.cs" />
     <Compile Include="ZipStorer.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BlockKinds.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BlockKinds.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
