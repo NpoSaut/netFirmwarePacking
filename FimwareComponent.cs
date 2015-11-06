@@ -20,13 +20,23 @@ namespace FirmwarePacking
             : this()
         {
             Targets = XComponent.Elements("TargetModule").Select(XTarget => (ComponentTarget)XTarget).ToList();
+            BootloaderRequirement = GetBootloaderRequirement(XComponent.Element("BootloaderRequirement"));
             this.Files = Files.ToList();
         }
 
         public String Name { get; set; }
         public IList<ComponentTarget> Targets { get; set; }
         public IList<FirmwareFile> Files { get; set; }
-        public ICollection<BootloaderRequirement> SupportedBootloaders { get; private set; }
+        public BootloaderRequirement BootloaderRequirement { get; private set; }
+
+        private BootloaderRequirement GetBootloaderRequirement(XElement XRequirement)
+        {
+            if (XRequirement == null)
+                return null;
+            return new BootloaderRequirement((int)XRequirement.Attribute("Id"),
+                                             new VersionRequirements((int)XRequirement.Attribute("MinVersion"),
+                                                                     (int)XRequirement.Attribute("MaxVersion")));
+        }
 
         public override string ToString() { return string.Format("Component for {0}", string.Join(", ", Targets)); }
     }
@@ -34,6 +44,13 @@ namespace FirmwarePacking
     /// <summary>Требования к образу</summary>
     public class BootloaderRequirement
     {
+        /// <summary>Инициализирует новый экземпляр класса <see cref="T:System.Object" />.</summary>
+        public BootloaderRequirement(int Id, VersionRequirements Version)
+        {
+            BootloaderId = Id;
+            BootloaderVersion = Version;
+        }
+
         /// <summary>Требуемый идентификатор загрузчика</summary>
         public int BootloaderId { get; private set; }
 
@@ -44,6 +61,13 @@ namespace FirmwarePacking
     /// <summary>Требования к версии</summary>
     public class VersionRequirements
     {
+        /// <summary>Инициализирует новый экземпляр класса <see cref="T:System.Object" />.</summary>
+        public VersionRequirements(int Minimum, int Maximum)
+        {
+            this.Minimum = Minimum;
+            this.Maximum = Maximum;
+        }
+
         /// <summary>Минимальная совместимая версия</summary>
         public int Minimum { get; private set; }
 
