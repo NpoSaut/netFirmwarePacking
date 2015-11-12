@@ -24,7 +24,7 @@
     <modification id="1" name="Atmel" device="at91sam7a3" config="00140000" />
     <modification id="2" name="Миландр" device="mdr32f9q2i" config="00050706" board="CanGateway-01" unichannel="true" />
   </block>
-  <block id="26" name="БС-СН—3" channels="1">
+  <block id="26" name="БС-СН-03" channels="1">
     <modification id="1" name="Базовая" device="at91sam7a3" board="MDR" />
   </block>
   <block id="27" name="БИЛ-ИП" channels="1">
