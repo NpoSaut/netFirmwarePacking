@@ -24,8 +24,8 @@
     <modification id="1" name="Atmel" device="at91sam7a3" config="00140000" />
     <modification id="2" name="Миландр" device="mdr32f9q2i" config="00050706" board="CanGateway-01" unichannel="true" />
   </block>
-  <block id="26" name="БС-СН БЛОК" channels="1">
-    <modification id="1" name="Базовая" device="at91sam7a3" />
+  <block id="26" name="БС-СН—3" channels="1">
+    <modification id="1" name="Базовая" device="at91sam7a3" board="MDR" />
   </block>
   <block id="27" name="БИЛ-ИП" channels="1">
     <modification id="1" name="Базовая" device="at90can128" />
@@ -37,6 +37,7 @@
     <modification id="1" name="Базовая" device="mini100" />
     <module id="1" name="Индикатор" />
     <module id="2" name="Программа ЭК" />
+    <module id="3" name="Карта" />
     <module id="254" name="Загрузчик" />
   </block>
   <block id="31" name="Монитор-7" channels="1">
