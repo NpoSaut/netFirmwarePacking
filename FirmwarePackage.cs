@@ -13,7 +13,7 @@ namespace FirmwarePacking
         public const char PathSeparator = '/';
 
         /// <summary>Текущая версия формата упаковщика</summary>
-        public const int Format_ActualVersion = 3;
+        public const int Format_ActualVersion = 4;
         /// <summary>Самая старая версия упаковщика, совместимая с текущим форматом</summary>
         public const int Format_CompatibleVersion = 1;
         /// <summary>Текущая версия формата упаковки, совместимая с данной библиотекой</summary>
@@ -73,14 +73,18 @@ namespace FirmwarePacking
         {
             return new XDocument(
                 new XElement("FirmwareInfo",
-                    new XAttribute("FormatVersion", Format_ActualVersion),
-                    new XAttribute("FormatCompatibleVersion", Format_CompatibleVersion),
-                    Information.ToXElement(),
-                    Components.Select((comp, i) =>
-                    new XElement("Component",
-                        new XAttribute("Directory", comp.Name),
-                        comp.Targets.Select(t => t.ToXElement())
-                        ))));
+                             new XAttribute("FormatVersion", Format_ActualVersion),
+                             new XAttribute("FormatCompatibleVersion", Format_CompatibleVersion),
+                             Information.ToXElement(),
+                             Components.Select((comp, i) =>
+                                               new XElement("Component",
+                                                            new XAttribute("Directory", comp.Name),
+                                                            new XElement("BootloaderRequirement",
+                                                                new XAttribute("Id", comp.BootloaderRequirement.BootloaderId),
+                                                                new XAttribute("MinVersion", comp.BootloaderRequirement.BootloaderVersion.Minimum),
+                                                                new XAttribute("MaxVersion", comp.BootloaderRequirement.BootloaderVersion.Maximum)),
+                                                            comp.Targets.Select(t => t.ToXElement())
+                                                   ))));
         }
 
         public void Save(string p)

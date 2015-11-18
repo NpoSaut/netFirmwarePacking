@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BootloaderRequirement.cs" />
     <Compile Include="Exceptions\FirmwarePackageFormatException.cs" />
     <Compile Include="Exceptions\FirmwarePackageUncompatibleFormatException.cs" />
     <Compile Include="FimwareComponent.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="SystemsIndexes\ModuleKind.cs" />
     <Compile Include="SystemsIndexes\XmlIndex.cs" />
     <Compile Include="SystemsIndexes\XmlPropertiesProvider.cs" />
+    <Compile Include="VersionRequirements.cs" />
     <Compile Include="ZipStorer.cs" />
   </ItemGroup>
   <ItemGroup>
