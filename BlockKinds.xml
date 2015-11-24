@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <index>
-  <block id="20" name="БС-ДПС" channels="2">
-    <modification id="1" name="128кб" device="at90can128" />
-    <modification id="2" name="64кб" device="at90can64" />
+  <block id="20" name="БС-ДПС" channels="2" >
+    <modification id="1" name="128кб" device="at90can128" unichannel="true" />
+    <modification id="2" name="64кб" device="at90can64" unichannel="true" />
   </block>
   <block id="21" name="ВДС-КХ" channels="2">
     <modification id="1" name="Базовая" device="at90can128" />
   </block>
   <block id="24" name="ВДС" channels="2">
-    <modification id="1" name="Базовая" device="at90can128" />
+    <modification id="1" name="Базовая" device="at90can128" unichannel="true" />
   </block>
   <block id="22" name="ВЫВОД-КХ" channels="2">
     <modification id="1" name="Базовая" device="at90can128" />
   </block>
   <block id="23" name="ВЫВОД" channels="2">
-    <modification id="1" name="Базовая" device="at90can128" />
+    <modification id="1" name="Базовая" device="at90can128" unichannel="true" />
   </block>
   <block id="10" name="Монитор-5" channels="1">
     <modification id="1" name="Базовая" device="win32" />
@@ -67,10 +67,10 @@
   
   <!-- Мастер-ячейки БС-КПА БЛОК -->
   <block id="1000" name="БС-КПА М-IN" channels="2">
-    <modification id="1" name="Базовая" device="at90can128" />
+    <modification id="1" name="Базовая" device="at90can128" unichannel="true" />
   </block>
   <block id="1001" name="БС-КПА М-OUT" channels="2">
-    <modification id="1" name="Базовая" device="at90can128" />
+    <modification id="1" name="Базовая" device="at90can128" unichannel="true" />
   </block>
   <block id="1002" name="БС-КПА УКАС" channels="1">
     <modification id="1" name="Базовая" device="at90can128" />
