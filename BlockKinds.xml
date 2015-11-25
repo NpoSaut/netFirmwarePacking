@@ -64,6 +64,11 @@
     <module id="1" name="Индикатор" />
     <module id="254" name="Загрузчик" />
   </block>
+  <block id="37" name="Монитор-7.1" channels="1">
+    <modification id="1" name="Базовая" device="mini100" />
+    <module id="1" name="Индикатор" />
+    <module id="254" name="Загрузчик" />
+  </block>
   
   <!-- Мастер-ячейки БС-КПА БЛОК -->
   <block id="1000" name="БС-КПА М-IN" channels="2">
