@@ -25,13 +25,16 @@
     <modification id="2" name="Миландр" device="mdr32f9q2i" config="00050706" board="CanGateway-01" unichannel="true" />
   </block>
   <block id="26" name="БС-СН-03" channels="1">
-    <modification id="1" name="Базовая" device="at91sam7a3" board="MDR" />
+    <modification id="1" name="Базовая" device="mdr32f9q2i" board="MDR" />
   </block>
   <block id="27" name="БИЛ-ИП" channels="1">
     <modification id="1" name="Базовая" device="at90can128" />
   </block>
   <block id="28" name="ВВД" channels="2">
     <modification id="1" name="Базовая" device="stm32f4" config="00293031" board="STM32F2" />
+  </block>
+  <block id="29" name="РС-АЛСН-01" channels="1">
+    <modification id="1" name="Базовая" device="mdr32f9q2i" board="MDR" />
   </block>
   <block id="30" name="Монитор-КХ" channels="1">
     <modification id="1" name="Базовая" device="mini100" />
