@@ -69,6 +69,9 @@
     <module id="1" name="Индикатор" />
     <module id="254" name="Загрузчик" />
   </block>
+  <block id="38" name="УСК-01" channels="1">
+    <modification id="1" name="Миландр" device="mdr32f9q2i" board="MDR" />
+  </block>
   
   <!-- Мастер-ячейки БС-КПА БЛОК -->
   <block id="1000" name="БС-КПА М-IN" channels="2">
