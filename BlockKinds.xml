@@ -1,102 +1,102 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <index>
   <block id="20" name="БС-ДПС" channels="2" >
-    <modification id="1" name="128кб" device="at90can128" unichannel="true" />
-    <modification id="2" name="64кб" device="at90can64" unichannel="true" />
+    <modification id="1" name="128кб" device="at90can128" default-bootloader="1" unichannel="true" />
+    <modification id="2" name="64кб" device="at90can64" default-bootloader="2" unichannel="true" />
   </block>
   <block id="21" name="ВДС-КХ" channels="2">
-    <modification id="1" name="Базовая" device="at90can128" />
+    <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" />
   </block>
   <block id="24" name="ВДС" channels="2">
-    <modification id="1" name="Базовая" device="at90can128" unichannel="true" />
+    <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" unichannel="true" />
   </block>
   <block id="22" name="ВЫВОД-КХ" channels="2">
-    <modification id="1" name="Базовая" device="at90can128" />
+    <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" />
   </block>
   <block id="23" name="ВЫВОД" channels="2">
-    <modification id="1" name="Базовая" device="at90can128" unichannel="true" />
+    <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" unichannel="true" />
   </block>
   <block id="10" name="Монитор-5" channels="1">
-    <modification id="1" name="Базовая" device="win32" />
+    <modification id="1" name="Базовая" device="mdr32f9q2i" default-bootloader="8" />
     <module id="1" name="Индикатор" />
   </block>
   <block id="25" name="Шлюз CAN" channels="2">
-    <modification id="1" name="Atmel" device="at91sam7a3" config="00140000" />
-    <modification id="2" name="Миландр" device="mdr32f9q2i" config="00050706" board="CanGateway-01" unichannel="true" />
+    <modification id="1" name="Atmel" device="at91sam7a3" default-bootloader="4" config="00140000" />
+    <modification id="2" name="Миландр" device="mdr32f9q2i" default-bootloader="5" config="00050706" board="CanGateway-01" unichannel="true" />
   </block>
   <block id="26" name="БС-СН-03" channels="1">
-    <modification id="1" name="Базовая" device="mdr32f9q2i" board="MDR" />
+    <modification id="1" name="Базовая" device="mdr32f9q2i" default-bootloader="5" board="MDR" />
   </block>
   <block id="27" name="БИЛ-ИП" channels="1">
-    <modification id="1" name="Базовая" device="at90can128" />
+    <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" />
   </block>
   <block id="28" name="ВВД" channels="2">
-    <modification id="1" name="Базовая" device="stm32f4" config="00293031" board="STM32F2" />
+    <modification id="1" name="Базовая" device="stm32f4" default-bootloader="3" config="00293031" board="STM32F2" />
   </block>
   <block id="29" name="РС-АЛСН-01" channels="1">
-    <modification id="1" name="Базовая" device="mdr32f9q2i" board="MDR" />
+    <modification id="1" name="Базовая" device="mdr32f9q2i" default-bootloader="5" board="MDR" />
   </block>
   <block id="30" name="Монитор-КХ" channels="1">
-    <modification id="1" name="Базовая" device="mini100" />
+    <modification id="1" name="Базовая" device="mini100" default-bootloader="6" />
     <module id="1" name="Индикатор" />
     <module id="2" name="Программа ЭК" />
     <module id="3" name="Карта" />
     <module id="254" name="Загрузчик" />
   </block>
   <block id="31" name="Монитор-7" channels="1">
-    <modification id="1" name="Базовая" device="mini100" />
+    <modification id="1" name="Базовая" device="mini100" default-bootloader="6" />
     <module id="1" name="Индикатор" />
     <module id="254" name="Загрузчик" />
   </block>
   <block id="32" name="УЛМИ" channels="1">
-    <modification id="1" name="Базовая" device="mini100" />
+    <modification id="1" name="Базовая" device="mini100" default-bootloader="6" />
     <module id="1" name="Индикатор" />
     <module id="254" name="Загрузчик" />
   </block>
   <block id="33" name="ТСКБМ-КП" channels="3">
-    <modification id="1" name="Базовая" device="stm32f4" />
+    <modification id="1" name="Базовая" device="stm32f4" default-bootloader="3" />
   </block>
   <block id="34" name="РС-АЛСН-01" channels="1">
-    <modification id="1" name="Базовая" device="mdr32f9q2i" />
+    <modification id="1" name="Базовая" device="mdr32f9q2i" default-bootloader="5" />
   </block>
   <block id="35" name="Модуль ввода - 01" channels="2">
-    <modification id="1" name="Базовая" device="mdr32f9q2i" />
+    <modification id="1" name="Базовая" device="mdr32f9q2i" default-bootloader="5" />
   </block>
   <block id="36" name="Монитор МС-7 для мотовоза" channels="1">
-    <modification id="1" name="Базовая" device="mini100" />
+    <modification id="1" name="Базовая" device="mini100" default-bootloader="6" />
     <module id="1" name="Индикатор" />
     <module id="254" name="Загрузчик" />
   </block>
   <block id="37" name="Монитор-7.1" channels="1">
-    <modification id="1" name="Базовая" device="mini100" />
+    <modification id="1" name="Базовая" device="mini100" default-bootloader="6" />
     <module id="1" name="Индикатор" />
     <module id="254" name="Загрузчик" />
   </block>
   <block id="38" name="УСК-01" channels="1">
-    <modification id="1" name="Миландр" device="mdr32f9q2i" board="MDR" />
+    <modification id="1" name="Миландр" device="mdr32f9q2i" default-bootloader="7" board="MDR" />
   </block>
   
   <!-- Мастер-ячейки БС-КПА БЛОК -->
   <block id="1000" name="БС-КПА М-IN" channels="2">
-    <modification id="1" name="Базовая" device="at90can128" unichannel="true" />
+    <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" unichannel="true" />
   </block>
   <block id="1001" name="БС-КПА М-OUT" channels="2">
-    <modification id="1" name="Базовая" device="at90can128" unichannel="true" />
+    <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" unichannel="true" />
   </block>
   <block id="1002" name="БС-КПА УКАС" channels="1">
-    <modification id="1" name="Базовая" device="at90can128" />
+    <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" />
   </block>
   <block id="1003" name="БС-КПА PROV" channels="1">
-    <modification id="1" name="Базовая" device="at90can128" />
+    <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" />
   </block>
   <block id="1004" name="БС-КПА ЯК-УК" channels="1">
-    <modification id="1" name="Базовая" device="at90can128" />
+    <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" />
   </block>
   <block id="1005" name="БС-КПА МФ1" channels="1">
-    <modification id="1" name="Базовая" device="at90can128" />
+    <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" />
   </block>
   <block id="1006" name="БС-КПА Ист.пит." channels="1">
-    <modification id="1" name="Базовая" device="at90can128" />
+    <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" />
   </block>
   
 </index>

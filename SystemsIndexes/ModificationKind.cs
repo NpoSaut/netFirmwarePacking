@@ -1,4 +1,5 @@
 ﻿using System;
+using FirmwarePacking.Annotations;
 
 namespace FirmwarePacking.SystemsIndexes
 {
@@ -13,8 +14,14 @@ namespace FirmwarePacking.SystemsIndexes
         }
 
         public int Id { get; private set; }
+
+        [NotNull]
         public String Name { get; private set; }
+
+        [NotNull]
         public String DeviceName { get; private set; }
+
+        [NotNull]
         public ICustomPropertiesProvider CustomProperties { get; private set; }
 
         public override string ToString() { return string.Format("[{0}] {1}", Id, Name); }
