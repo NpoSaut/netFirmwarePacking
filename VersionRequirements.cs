@@ -17,5 +17,12 @@ namespace FirmwarePacking
         public int Maximum { get; private set; }
 
         public bool Intersects(int CompatibleVersion, int ActualVersion) { return CompatibleVersion <= Maximum && ActualVersion >= Minimum; }
+
+        public override string ToString()
+        {
+            return Minimum == Maximum
+                       ? string.Format("{0}", Minimum)
+                       : string.Format("{0} – {1}", Minimum, Maximum);
+        }
     }
 }
