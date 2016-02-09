@@ -25,7 +25,10 @@ namespace FirmwarePacking.SystemsIndexes
 
         private static List<ModuleKind> DefaultModules
         {
-            get { return new List<ModuleKind> { new ModuleKind(1, "Основной модуль") }; }
+            get
+            {
+                return new List<ModuleKind> { new ModuleKind(1, "Основной модуль", new DictionaryCustomPropertiesProvider(new Dictionary<string, string>())) };
+            }
         }
 
         public int ChannelsCount { get; set; }

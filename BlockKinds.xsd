@@ -15,6 +15,7 @@
   <xs:complexType name="Module">
     <xs:attribute name="id" type="xs:unsignedByte" use="required" />
     <xs:attribute name="name" type="xs:string" use="required" />
+    <xs:attribute name="directory-name" type="xs:string" use="optional" />
   </xs:complexType>
 
   <xs:element name="index">

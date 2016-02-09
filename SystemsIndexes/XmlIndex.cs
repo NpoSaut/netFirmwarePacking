@@ -28,7 +28,8 @@ namespace FirmwarePacking.SystemsIndexes
                                 XBlock.Elements("module").Select(XModule =>
                                     new ModuleKind(
                                         (int)XModule.Attribute("id"),
-                                        (String)XModule.Attribute("name"))).ToList(),
+                                        (String)XModule.Attribute("name"),
+                                        new XmlPropertiesProvider(XModule))).ToList(),
                                 XBlock.Elements("modification").Select(XModification =>
                                     new ModificationKind(
                                         (int)XModification.Attribute("id"),
