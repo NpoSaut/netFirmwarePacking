@@ -10,6 +10,7 @@
     <xs:attribute name="config" type="xs:string" use="optional" />
     <xs:attribute name="board" type="xs:string" use="optional" />
     <xs:attribute name="unichannel" type="xs:boolean" use="optional" default="false" />
+    <xs:attribute name="kernl-image" type="xs:string" use="optional" />
   </xs:complexType>
 
   <xs:complexType name="Module">

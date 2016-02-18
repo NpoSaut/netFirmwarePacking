@@ -37,19 +37,19 @@
     <modification id="1" name="Базовая" device="mdr32f9q2i" default-bootloader="5" config="00044041" board="MDR" />
   </block>
   <block id="30" name="Монитор-КХ" channels="1">
-    <modification id="1" name="Базовая" device="mini100" default-bootloader="6" />
+    <modification id="1" name="Базовая" device="mini100" default-bootloader="6" kernl-image="zImage-800x480-logo" />
     <module id="1" name="Индикатор" directory-name="QtMon" />
     <module id="2" name="Программа ЭК" directory-name="QtMap" />
     <module id="3" name="Карта" directory-name="Map" />
     <module id="254" name="Загрузчик" directory-name="Loader" />
   </block>
   <block id="31" name="Монитор-7" channels="1">
-    <modification id="1" name="Базовая" device="mini100" default-bootloader="6" />
+    <modification id="1" name="Базовая" device="mini100" default-bootloader="6" kernl-image="zImage-1024x768-logo" />
     <module id="1" name="Индикатор" directory-name="QtMon" />
     <module id="254" name="Загрузчик" directory-name="Loader" />
   </block>
   <block id="32" name="УЛМИ" channels="1">
-    <modification id="1" name="Базовая" device="mini100" default-bootloader="6" />
+    <modification id="1" name="Базовая" device="mini100" default-bootloader="6" kernl-image="zImage-800x480-logo" />
     <module id="1" name="Индикатор" directory-name="QtMon" />
     <module id="254" name="Загрузчик" directory-name="Loader" />
   </block>
@@ -60,12 +60,13 @@
     <modification id="1" name="Базовая" device="mdr32f9q2i" default-bootloader="5" board="MDR-x2" config="00424041" />
   </block>
   <block id="36" name="Монитор МС-7 для мотовоза" channels="1">
-    <modification id="1" name="Базовая" device="mini100" default-bootloader="6" />
+    <modification id="1" name="Базовая" device="mini100" default-bootloader="6" kernl-image="zImage-800x480-clock" />
     <module id="1" name="Индикатор" directory-name="QtMon" />
     <module id="254" name="Загрузчик" directory-name="Loader" />
   </block>
   <block id="37" name="Монитор-7.1" channels="1">
-    <modification id="1" name="Базовая" device="mini100" default-bootloader="6" />
+    <modification id="1" name="Базовая" device="mini100" default-bootloader="6" kernl-image="zImage-1024x768-logo" />
+    <modification id="2" name="800x600" device="mini100" default-bootloader="6" kernl-image="zImage-800x480-logo" />
     <module id="1" name="Индикатор" directory-name="QtMon" />
     <module id="254" name="Загрузчик" directory-name="Loader" />
   </block>
