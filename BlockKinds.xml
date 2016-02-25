@@ -61,7 +61,7 @@
   </block>
   <block id="36" name="Монитор МС-7 для мотовоза" channels="1">
     <modification id="1" name="Базовая" device="mini100" default-bootloader="6" kernl-image="zImage-800x480-clock" />
-    <module id="1" name="Индикатор" directory-name="QtMon" />
+    <module id="1" name="Индикатор" directory-name="QtTrol" />
     <module id="254" name="Загрузчик" directory-name="Loader" />
   </block>
   <block id="37" name="Монитор-7.1" channels="1">
