@@ -75,9 +75,10 @@
     <Compile Include="ZipStorer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BlockKinds.xml">
+    <Content Include="BlockKinds.xml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="BlockKinds.xsd">
