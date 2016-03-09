@@ -1,6 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <index>
-  <block id="20" name="БС-ДПС" channels="2" >
+  <block id="20" name="БС-ДПС/M-CAN" channels="2">
     <modification id="1" name="128кб" device="at90can128" default-bootloader="1" unichannel="true" />
     <modification id="2" name="64кб" device="at90can64" default-bootloader="2" unichannel="true" />
   </block>
@@ -16,16 +17,17 @@
   <block id="23" name="ВЫВОД" channels="2">
     <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" unichannel="true" />
   </block>
-  <block id="10" name="Монитор-5" channels="1">
+  <block id="10" name="Монитор 5.2" channels="1">
     <modification id="1" name="Базовая" device="win32" default-bootloader="8" />
     <module id="1" name="Индикатор" />
   </block>
   <block id="25" name="Шлюз CAN" channels="2">
     <modification id="1" name="Базовая" device="at91sam7a3" default-bootloader="4" config="00140000" board="SAM7" />
-    <modification id="2" name="01" device="mdr32f9q2i" default-bootloader="5" config="00050706" board="MDR-x2" unichannel="true" />
+    <modification id="2" name="01" device="mdr32f9q2i" default-bootloader="5" config="00050706" board="MDR-x2"
+                  unichannel="true" />
   </block>
   <block id="26" name="БС-СН" channels="1">
-	<modification id="2" name="Базовая" device="at91sam7a3" default-bootloader="4" config="00140000" board="SAM7" />
+    <modification id="2" name="Базовая" device="at91sam7a3" default-bootloader="4" config="00140000" board="SAM7" />
     <modification id="1" name="03" device="mdr32f9q2i" default-bootloader="5" board="MDR" />
   </block>
   <block id="27" name="БИЛ-ИП" channels="1">
@@ -35,7 +37,7 @@
     <modification id="1" name="Базовая" device="stm32f4" default-bootloader="3" config="00293031" board="STM32F2" />
   </block>
   <block id="29" name="(Б)РС-АЛСН" channels="1">
-  	<modification id="2" name="Базовая" device="at91sam7a3" default-bootloader="4" config="009D0000" board="SAM7" />
+    <modification id="2" name="Базовая" device="at91sam7a3" default-bootloader="4" config="009D0000" board="SAM7" />
     <modification id="1" name="01" device="mdr32f9q2i" default-bootloader="5" config="00044041" board="MDR" />
   </block>
   <block id="30" name="Монитор-КХ" channels="1">
@@ -45,7 +47,7 @@
     <module id="3" name="Карта" directory-name="Map" />
     <module id="254" name="Загрузчик" directory-name="Loader" />
   </block>
-  <block id="31" name="Монитор-7" channels="1">
+  <block id="31" name="Монитор 7" channels="1">
     <modification id="1" name="Базовая" device="mini100" default-bootloader="6" kernl-image="zImage-1024x768-logo" />
     <module id="1" name="Индикатор" directory-name="QtMon" />
     <module id="254" name="Загрузчик" directory-name="Loader" />
@@ -59,15 +61,16 @@
     <modification id="1" name="Базовая" device="stm32f4" default-bootloader="3" />
   </block>
   <block id="35" name="Модуль ввода" channels="2">
-	<modification id="2" name="Базовая" device="at91sam7a3" default-bootloader="4" config="009D0000" board="SAM7"/>
-    <modification id="1" name="М" device="mdr32f9q2i" default-bootloader="5" board="MDR-x2" config="00424041" unichannel="true"/>
+    <modification id="2" name="Базовая" device="at91sam7a3" default-bootloader="4" config="009D0000" board="SAM7" />
+    <modification id="1" name="М" device="mdr32f9q2i" default-bootloader="5" board="MDR-x2" config="00424041"
+                  unichannel="true" />
   </block>
-  <block id="36" name="Монитор МС-7 для мотовоза" channels="1">
+  <block id="36" name="Монитор системный МС7" channels="1">
     <modification id="1" name="Базовая" device="mini100" default-bootloader="6" kernl-image="zImage-800x480-clock" />
     <module id="1" name="Индикатор" directory-name="QtTrol" />
     <module id="254" name="Загрузчик" directory-name="Loader" />
   </block>
-  <block id="37" name="Монитор-7.1" channels="1">
+  <block id="37" name="Монитор 7.1" channels="1">
     <modification id="1" name="Базовая" device="mini100" default-bootloader="6" kernl-image="zImage-1024x768-logo" />
     <modification id="2" name="800x600" device="mini100" default-bootloader="6" kernl-image="zImage-800x480-logo" />
     <module id="1" name="Индикатор" directory-name="QtMon" />
@@ -80,9 +83,9 @@
     <modification id="1" name="Базовая" device="at91sam3a" default-bootloader="0" board="SAM3" />
   </block>
   <block id="40" name="ТСКБМ-К" channels="2">
-    <modification id="1" name="Базовая" device="at91sam7a3" default-bootloader="0" board="SAM7"/>
+    <modification id="1" name="Базовая" device="at91sam7a3" default-bootloader="0" board="SAM7" />
   </block>
-  
+
   <!-- Мастер-ячейки БС-КПА БЛОК -->
   <block id="1000" name="БС-КПА М-IN" channels="2">
     <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" unichannel="true" />
@@ -108,5 +111,5 @@
   <block id="1007" name="БС-КПА АППИ" channels="2">
     <modification id="1" name="Базовая" device="at91sam7a3" default-bootloader="0" config="0" board="SAM7" />
   </block>
-  
+
 </index>
