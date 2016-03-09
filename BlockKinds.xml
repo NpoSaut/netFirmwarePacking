@@ -57,7 +57,7 @@
     <modification id="1" name="Базовая" device="stm32f4" default-bootloader="3" />
   </block>
   <block id="35" name="Модуль ввода М" channels="2">
-    <modification id="1" name="Базовая" device="mdr32f9q2i" default-bootloader="5" board="MDR-x2" config="00424041" />
+    <modification id="1" name="Базовая" device="mdr32f9q2i" default-bootloader="5" board="MDR-x2" config="00424041" unichannel="true" />
   </block>
   <block id="36" name="Монитор МС-7 для мотовоза" channels="1">
     <modification id="1" name="Базовая" device="mini100" default-bootloader="6" kernl-image="zImage-800x480-clock" />
