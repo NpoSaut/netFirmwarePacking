@@ -20,16 +20,24 @@ namespace FirmwarePacking
             this.FirmwareVersion = FirmwareVersion;
             _firmwareVersionLabel = FirmwareVersionLabel;
             this.ReleaseDate = ReleaseDate;
+            Guid = Guid.NewGuid();
         }
 
         public PackageInformation(XElement XInformation)
             : this()
         {
+            XAttribute guidAttribute = XInformation.Attribute("Guid");
+            if (guidAttribute != null)
+                Guid = (Guid)guidAttribute;
+
             XElement xVersionInfo = XInformation.Element("Version");
             FirmwareVersion = new Version((int)xVersionInfo.Attribute("Major"), (int?)xVersionInfo.Attribute("Minor") ?? 0);
             FirmwareVersionLabel = (String)xVersionInfo.Attribute("Label");
             ReleaseDate = (DateTime)xVersionInfo.Attribute("ReleaseDate");
         }
+
+        /// <summary>GUID пакета</summary>
+        public Guid Guid { get; set; }
 
         /// <summary>Версия прошивки</summary>
         public Version FirmwareVersion { get; set; }
@@ -51,6 +59,7 @@ namespace FirmwarePacking
         public XElement ToXElement(String ElementName = "FirmwareInformation")
         {
             return new XElement(ElementName,
+                                new XAttribute("Guid", Guid),
                                 new XElement("Version",
                                              new XAttribute("Major", FirmwareVersion.Major),
                                              new XAttribute("Minor", FirmwareVersion.Minor),
