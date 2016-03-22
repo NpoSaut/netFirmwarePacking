@@ -28,7 +28,7 @@
   </block>
   <block id="26" name="БС-СН" channels="1">
     <modification id="2" name="Базовая" device="at91sam7a3" default-bootloader="4" config="00140000" board="SAM7" />
-    <modification id="1" name="03" device="mdr32f9q2i" default-bootloader="5" board="MDR" />
+    <modification id="1" name="03" device="mdr32f9q2i" default-bootloader="5" config="00340706" board="MDR" />
   </block>
   <block id="27" name="БИЛ-ИП" channels="1">
     <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" />
