@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema id="sfp-index"
+           targetNamespace="https://repo.nposaut.ru/schemas/sfp-index.xsd"
+           elementFormDefault="qualified"
+           xmlns="https://repo.nposaut.ru/schemas/sfp-index.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+  <xs:simpleType name="GuidType">
+   <xs:restriction base="xs:string">
+     <xs:pattern value="^[{|\(]?[0-9A-Fa-f]{8}[-]?([0-9A-Fa-f]{4}[-]?){3}[0-9A-Fa-f]{12}[\)|}]?$" />
+   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="VersionType">
+    <xs:annotation>
+      <xs:documentation>Версия ПО в файле</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Major" type="xs:unsignedInt" use="required" />
+    <xs:attribute name="Minor" type="xs:unsignedInt" use="required" />
+    <xs:attribute name="Label" type="xs:string" use="optional" />
+    <xs:attribute name="ReleaseDate" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="TargetType">
+    <xs:annotation>
+      <xs:documentation>Цель для компонента</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="System" type="xs:unsignedInt" use="required">
+      <xs:annotation>
+        <xs:documentation>ID системы. Более не используется.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Cell" type="xs:unsignedInt" use="required">
+      <xs:annotation>
+        <xs:documentation>ID типа изделия (ячейки)</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Modification" type="xs:unsignedInt" use="required">
+      <xs:annotation>
+        <xs:documentation>ID модификации изделия</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Channel" type="xs:unsignedByte" use="required">
+      <xs:annotation>
+        <xs:documentation>Номер канала</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Module" type="xs:unsignedByte" use="required">
+      <xs:annotation>
+        <xs:documentation>ID программного модуля</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:element name="FirmwareInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="FirmwareInformation">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Version" type="VersionType" />
+            </xs:sequence>
+            <xs:attribute name="GUID" type="GuidType" use="required">
+              <xs:annotation>
+                <xs:documentation>
+                    GUID прошивки - уникальный идентификатор, генерируемый случайно для каждожго файла
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Component">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TargetModule" minOccurs="1" maxOccurs="unbounded" type="TargetType" />
+            </xs:sequence>
+            <xs:attribute name="Directory" type="xs:string" use="required">
+              <xs:annotation>
+                <xs:documentation>Название директории, содержащей компонент</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="FormatVersion" type="xs:unsignedByte" use="required">
+        <xs:annotation>
+          <xs:documentation>Версия формата .sfp, используемая в этом файле</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="FormatCompatibleVersion" type="xs:unsignedByte" use="required">
+        <xs:annotation>
+          <xs:documentation>Минимальная версия формата .sfp, с которой совместим этот файл</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
