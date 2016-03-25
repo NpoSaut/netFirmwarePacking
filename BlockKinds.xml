@@ -22,7 +22,7 @@
     <module id="1" name="Индикатор" />
   </block>
   <block id="25" name="Шлюз CAN" channels="2">
-    <modification id="1" name="Базовая" device="at91sam7a3" default-bootloader="4" config="00140000" board="SAM7" />
+    <modification id="1" name="Базовая" device="at91sam7a3" default-bootloader="4" config="009D0000" board="SAM7" />
     <modification id="2" name="01" device="mdr32f9q2i" default-bootloader="5" config="00050706" board="MDR-x2"
                   unichannel="true" />
   </block>
