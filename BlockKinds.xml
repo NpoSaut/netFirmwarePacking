@@ -43,8 +43,9 @@
   <block id="30" name="Монитор-КХ" channels="1">
     <modification id="1" name="Базовая" device="mini100" default-bootloader="6" kernl-image="zImage-800x480-logo" />
     <module id="1" name="Индикатор" directory-name="QtMon" />
-    <module id="2" name="Программа ЭК" directory-name="QtMap" />
-    <module id="3" name="Карта" directory-name="Map" />
+    <module id="2" name="Электронная карта" directory-name="QtMap" />
+    <module id="3" name="Карта" directory-name="Map" obsolete="true" />
+    <module id="253" name="Загрузчик карты" directory-name="MapLoader" />
     <module id="254" name="Загрузчик" directory-name="Loader" />
   </block>
   <block id="31" name="Монитор 7" channels="1">
