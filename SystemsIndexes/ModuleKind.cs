@@ -5,8 +5,9 @@ namespace FirmwarePacking.SystemsIndexes
 {
     public class ModuleKind
     {
-        public ModuleKind(int Id, string Name, ICustomPropertiesProvider CustomProperties)
+        public ModuleKind(int Id, string Name, bool Obsolete, ICustomPropertiesProvider CustomProperties)
         {
+            this.Obsolete = Obsolete;
             this.CustomProperties = CustomProperties;
             this.Id = Id;
             this.Name = Name;
@@ -16,6 +17,8 @@ namespace FirmwarePacking.SystemsIndexes
 
         [NotNull]
         public String Name { get; private set; }
+
+        public bool Obsolete { get; private set; }
 
         [NotNull]
         public ICustomPropertiesProvider CustomProperties { get; private set; }

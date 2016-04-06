@@ -27,7 +27,7 @@ namespace FirmwarePacking.SystemsIndexes
         {
             get
             {
-                return new List<ModuleKind> { new ModuleKind(1, "Основной модуль", new DictionaryCustomPropertiesProvider(new Dictionary<string, string>())) };
+                return new List<ModuleKind> { new ModuleKind(1, "Основной модуль", false, new DictionaryCustomPropertiesProvider(new Dictionary<string, string>())) };
             }
         }
 

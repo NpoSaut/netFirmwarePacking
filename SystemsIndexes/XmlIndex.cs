@@ -29,12 +29,14 @@ namespace FirmwarePacking.SystemsIndexes
                                     new ModuleKind(
                                         (int)XModule.Attribute("id"),
                                         (String)XModule.Attribute("name"),
+                                        (bool?)XModule.Attribute("obsolete") ?? false,
                                         new XmlPropertiesProvider(XModule))).ToList(),
                                 XBlock.Elements("modification").Select(XModification =>
                                     new ModificationKind(
                                         (int)XModification.Attribute("id"),
                                         (String)XModification.Attribute("name"),
                                         (String)XModification.Attribute("device"),
+                                        (bool?)XModification.Attribute("obsolete") ?? false,
                                         new XmlPropertiesProvider(XModification)))
                                     .ToList()))
                             .ToList());

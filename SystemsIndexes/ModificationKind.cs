@@ -5,8 +5,9 @@ namespace FirmwarePacking.SystemsIndexes
 {
     public class ModificationKind
     {
-        public ModificationKind(int Id, string Name, string DeviceName, ICustomPropertiesProvider CustomProperties)
+        public ModificationKind(int Id, string Name, string DeviceName, bool Obsolete, ICustomPropertiesProvider CustomProperties)
         {
+            this.Obsolete = Obsolete;
             this.Id = Id;
             this.Name = Name;
             this.DeviceName = DeviceName;
@@ -20,6 +21,8 @@ namespace FirmwarePacking.SystemsIndexes
 
         [NotNull]
         public String DeviceName { get; private set; }
+
+        public bool Obsolete { get; private set; }
 
         [NotNull]
         public ICustomPropertiesProvider CustomProperties { get; private set; }
