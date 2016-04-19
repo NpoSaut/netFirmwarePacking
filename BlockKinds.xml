@@ -2,8 +2,8 @@
 
 <index>
   <block id="20" name="БС-ДПС M-CAN" channels="2">
-    <modification id="1" name="128кб" device="at90can128" default-bootloader="1" unichannel="true" />
-    <modification id="2" name="64кб" device="at90can64" default-bootloader="2" unichannel="true" />
+    <modification id="1" name="128кб" device="at90can128" default-bootloader="1" unichannel="true" saut-modification="11" />
+    <modification id="2" name="64кб" device="at90can64" default-bootloader="2" unichannel="true" saut-modification="21" />
   </block>
   <block id="21" name="ВДС-КХ" channels="2">
     <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" />

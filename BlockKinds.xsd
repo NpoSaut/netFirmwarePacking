@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+  <xs:simpleType name="byteHex">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9A-Fa-f]{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
   <xs:complexType name="Modification">
     <xs:attribute name="id" type="xs:unsignedByte" use="required" />
     <xs:attribute name="name" type="xs:string" use="required" />
@@ -12,6 +18,8 @@
     <xs:attribute name="board" type="xs:string" use="optional" />
     <xs:attribute name="unichannel" type="xs:boolean" use="optional" default="false" />
     <xs:attribute name="kernl-image" type="xs:string" use="optional" />
+    
+    <xs:attribute name="saut-modification" type="byteHex" use="optional" />
   </xs:complexType>
 
   <xs:complexType name="Module">
