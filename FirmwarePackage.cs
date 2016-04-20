@@ -39,7 +39,6 @@ namespace FirmwarePacking
         {
             using (ZipStorer pack = ZipStorer.Open(FileName, FileAccess.Read))
             {
-                Stopwatch sw = Stopwatch.StartNew();
                 pack.EncodeUTF8 = true;
                 List<ZipStorer.ZipFileEntry> files = pack.ReadCentralDir();
                 ZipStorer.ZipFileEntry index = files.Single(f => f.FilenameInZip == "index.xml");
@@ -54,20 +53,16 @@ namespace FirmwarePacking
                     == FormatVersionCompatiblity.NotCompatible)
                     throw new FirmwarePackageUncompatibleFormatException();
 
-                var res =
-                    new FirmwarePackage
-                    {
-                        Information = new PackageInformation(doc.Root.Element("FirmwareInformation")),
-                        Components = doc.Root.Elements("Component").Select(XComponent =>
-                                                                           new FirmwareComponent(
-                                                                               XComponent,
-                                                                               new SfpFilePackageContentProvider(FileName,
-                                                                                                                 (string)XComponent.Attribute("Directory"))))
-                                        .ToList()
-                    };
-                sw.Stop();
-                Debug.WriteLine("PACKAGE LOADED over {0} ms", sw.ElapsedMilliseconds);
-                return res;
+                return new FirmwarePackage
+                       {
+                           Information = new PackageInformation(doc.Root.Element("FirmwareInformation")),
+                           Components = doc.Root.Elements("Component").Select(XComponent =>
+                                                                              new FirmwareComponent(
+                                                                                  XComponent,
+                                                                                  new SfpFilePackageContentProvider(FileName,
+                                                                                                                    (string)XComponent.Attribute("Directory"))))
+                                           .ToList()
+                       };
             }
         }
 
