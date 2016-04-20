@@ -7,26 +7,34 @@ namespace FirmwarePacking
 {
     public class FirmwareComponent
     {
+        private readonly Lazy<IList<FirmwareFile>> _files;
+
         private FirmwareComponent() { Name = Guid.NewGuid().ToString(); }
 
-        public FirmwareComponent(IList<ComponentTarget> Targets)
+        public FirmwareComponent(IList<ComponentTarget> Targets, IEnumerable<FirmwareFile> Files)
             : this()
         {
             this.Targets = Targets;
-            Files = new List<FirmwareFile>();
+            _files = new Lazy<IList<FirmwareFile>>(Files.ToList);
         }
 
-        public FirmwareComponent(XElement XComponent, IEnumerable<FirmwareFile> Files)
+        public FirmwareComponent(XElement XComponent, IPackageContentProvider ContentProvider)
             : this()
         {
             Targets = XComponent.Elements("TargetModule").Select(XTarget => (ComponentTarget)XTarget).ToList();
             BootloaderRequirement = GetBootloaderRequirement(XComponent.Element("BootloaderRequirement"));
-            this.Files = Files.ToList();
+
+            _files = new Lazy<IList<FirmwareFile>>(ContentProvider.LoadFirmwareFiles);
         }
 
         public String Name { get; set; }
         public IList<ComponentTarget> Targets { get; set; }
-        public IList<FirmwareFile> Files { get; set; }
+
+        public IList<FirmwareFile> Files
+        {
+            get { return _files.Value; }
+        }
+
         public BootloaderRequirement BootloaderRequirement { get; set; }
 
         private BootloaderRequirement GetBootloaderRequirement(XElement XRequirement)
