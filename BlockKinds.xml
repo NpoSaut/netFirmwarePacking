@@ -87,10 +87,10 @@
     <modification id="1" name="Базовая" device="at91sam7a3" default-bootloader="0" board="SAM7" />
   </block>
   <block id="41" name="ПТК" channels="2">
-    <modification id="1" name="Базовая" device="at90can128" default-bootloader="9" />
+    <modification id="1" name="Базовая" device="at90can128" default-bootloader="9"  saut-modification="40" />
   </block>
   <block id="42" name="ВС-САУТ" channels="3">
-    <modification id="1" name="Базовая" device="at90can128" default-bootloader="9" />
+    <modification id="1" name="Базовая" device="at90can128" default-bootloader="9"  saut-modification="11" />
   </block>
 
   <!-- Мастер-ячейки БС-КПА БЛОК -->
