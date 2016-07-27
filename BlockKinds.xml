@@ -112,7 +112,7 @@
   <block id="1005" name="БС-КПА МФ1" channels="1">
     <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" />
   </block>
-  <block id="1006" name="БС-КПА Ист.пит." channels="1">
+  <block id="1006" name="БС-КПА ИП" channels="1">
     <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" />
   </block>
   <block id="1007" name="БС-КПА АППИ" channels="2">
