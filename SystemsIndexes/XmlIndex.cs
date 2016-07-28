@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -43,6 +44,7 @@ namespace FirmwarePacking.SystemsIndexes
         }
     }
 
+    [Obsolete("Встроенный индекс более не используется", true)]
     public class ResourceXmlIndex : XmlIndex
     {
         public ResourceXmlIndex() : base(GetInjectedIndex()) { }
@@ -53,6 +55,25 @@ namespace FirmwarePacking.SystemsIndexes
             var manifestResourceStream = assembly.GetManifestResourceStream("FirmwarePacking.BlockKinds.xml");
             var document = XDocument.Load(manifestResourceStream);
             return document.Root;
+        }
+    }
+
+    public static class LocalXmlIndexFactory
+    {
+        private static readonly Lazy<XmlIndex> _lazyIndex;
+
+        static LocalXmlIndexFactory()
+        {
+            _lazyIndex = new Lazy<XmlIndex>(() =>
+                                            {
+                                                string localDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                                                return new XmlIndex(Path.Combine(localDir, "BlockKinds.xml"));
+                                            });
+        }
+
+        public static XmlIndex Index
+        {
+            get { return _lazyIndex.Value; }
         }
     }
 }
