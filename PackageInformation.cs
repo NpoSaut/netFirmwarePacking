@@ -32,7 +32,8 @@ namespace FirmwarePacking
 
             XElement xVersionInfo = XInformation.Element("Version");
             FirmwareVersion = new Version((int)xVersionInfo.Attribute("Major"), (int?)xVersionInfo.Attribute("Minor") ?? 0);
-            FirmwareVersionLabel = (String)xVersionInfo.Attribute("Label");
+            var rawLabel = (String)xVersionInfo.Attribute("Label");
+            FirmwareVersionLabel = string.IsNullOrWhiteSpace(rawLabel) ? null : rawLabel;
             ReleaseDate = (DateTime)xVersionInfo.Attribute("ReleaseDate");
         }
 
@@ -63,7 +64,9 @@ namespace FirmwarePacking
                                 new XElement("Version",
                                              new XAttribute("Major", FirmwareVersion.Major),
                                              new XAttribute("Minor", FirmwareVersion.Minor),
-                                             FirmwareVersionLabel != null ? new XAttribute("Label", FirmwareVersionLabel) : null,
+                                             string.IsNullOrWhiteSpace(FirmwareVersionLabel)
+                                                 ? null
+                                                 : new XAttribute("Label", FirmwareVersionLabel),
                                              new XAttribute("ReleaseDate", ReleaseDate.ToString("u"))));
         }
 
