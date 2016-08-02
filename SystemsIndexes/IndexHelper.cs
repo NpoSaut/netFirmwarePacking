@@ -1,11 +1,18 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace FirmwarePacking.SystemsIndexes
 {
     public class IndexHelper : IIndexHelper
     {
         private readonly IIndex _index;
-        public IndexHelper(IIndex Index) { _index = Index; }
+
+        public IndexHelper(IIndex Index)
+        {
+            if (Index == null)
+                throw new ArgumentNullException("Index", "При инициализации IndexHelper был указан пустой индекс");
+            _index = Index;
+        }
 
         /// <summary>Находит имя ячейки</summary>
         /// <param name="CellId">Идентификатор ячейки</param>
