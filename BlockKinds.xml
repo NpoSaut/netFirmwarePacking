@@ -92,6 +92,10 @@
   <block id="42" name="ВС-САУТ" channels="3">
     <modification id="1" name="Базовая" device="at90can128" default-bootloader="9"  saut-modification="11" />
   </block>
+  <block id="43" name="ПМ10" channels="1">
+    <modification id="1" name="Базовая" device="mini100" default-bootloader="10" kernl-image="zImage-1024x768-clock" />
+    <module id="1" name="Индикатор" directory-name="QMonSaut" />
+  </block>
 
   <!-- Мастер-ячейки БС-КПА БЛОК -->
   <block id="1000" name="БС-КПА М-IN" channels="2">
