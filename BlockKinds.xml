@@ -96,6 +96,13 @@
     <modification id="1" name="Базовая" device="mini100" default-bootloader="10" kernl-image="zImage-1024x768-clock" />
     <module id="1" name="Индикатор" directory-name="QMonSaut" />
   </block>
+  <block id="44" name="Монитор 7 для МПТ-2" channels="1">
+    <modification id="1" name="Базовая" device="mini100" default-bootloader="10" kernl-image="zImage-1024x768-clock" />
+    <module id="1" name="Индикатор" directory-name="QtTMon" />
+    <module id="2" name="Электронная карта" directory-name="QtMap" />
+    <module id="253" name="Загрузчик карты" directory-name="MapLoader" />
+    <module id="254" name="Загрузчик" directory-name="Loader" />
+  </block>
 
   <!-- Мастер-ячейки БС-КПА БЛОК -->
   <block id="1000" name="БС-КПА М-IN" channels="2">
