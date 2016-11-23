@@ -97,7 +97,7 @@
     <module id="1" name="Индикатор" directory-name="QMonSaut" />
   </block>
   <block id="44" name="Монитор 7.2" channels="1">
-    <modification id="1" name="Базовая" device="mini100" default-bootloader="10" kernl-image="zImage-1024х768-clock" />
+    <modification id="1" name="Базовая" device="mini100" default-bootloader="10" kernl-image="zImage-1024x768-clock" />
     <module id="1" name="Индикатор" directory-name="QtTMon" />
     <module id="2" name="Электронная карта" directory-name="QtMap" />
     <module id="253" name="Загрузчик карты" directory-name="MapLoader" />
