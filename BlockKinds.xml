@@ -90,7 +90,7 @@
     <modification id="1" name="Базовая" device="at90can128" default-bootloader="9"  saut-modification="40" unichannel="true" />
   </block>
   <block id="42" name="ВС-САУТ" channels="3">
-    <modification id="1" name="Базовая" device="at90can128" default-bootloader="9"  saut-modification="11" />
+    <modification id="1" name="Базовая" device="vs-saut" default-bootloader="9"  saut-modification="11" />
   </block>
   <block id="43" name="ПМ10" channels="1">
     <modification id="1" name="Базовая" device="mini100" default-bootloader="10" kernl-image="zImage-1024x768-saut" />
