@@ -34,7 +34,8 @@
     <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" />
   </block>
   <block id="28" name="ВВД" channels="2">
-    <modification id="1" name="Базовая" device="stm32f4" default-bootloader="3" config="00293031" board="STM32F2" />
+    <modification id="1" name="STM32"   device="stm32f4"    default-bootloader="3" config="00293031" board="STM32F2" />
+    <modification id="2" name="Миландр" device="mdr32f9q2i" default-bootloader="5" config="00624041" board="MDR" />
   </block>
   <block id="29" name="(Б)РС-АЛСН" channels="1">
     <modification id="2" name="Базовая" device="at91sam7a3" default-bootloader="4" config="009D0000" board="SAM7" />
