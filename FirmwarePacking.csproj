@@ -64,6 +64,8 @@
     <Compile Include="SfpFilePackageContentProvider.cs" />
     <Compile Include="SystemsIndexes\BlockKind.cs" />
     <Compile Include="SystemsIndexes\DictionaryCustomPropertiesProvider.cs" />
+    <Compile Include="SystemsIndexes\Exceptions\ElementNotFoundIndexException.cs" />
+    <Compile Include="SystemsIndexes\Exceptions\IndexException.cs" />
     <Compile Include="SystemsIndexes\ICustomPropertiesProvider.cs" />
     <Compile Include="SystemsIndexes\IIndex.cs" />
     <Compile Include="SystemsIndexes\IIndexHelper.cs" />
@@ -90,6 +92,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
