@@ -46,6 +46,8 @@
     <module id="1" name="Индикатор" directory-name="QtMon" />
     <module id="2" name="Электронная карта" directory-name="QtMap" />
     <module id="3" name="Карта" directory-name="Map" obsolete="true" />
+    <module id="5" name="ПМПД" directory-name="Pmpd" obsolete="true" />
+    <module id="6" name="Шлюз ПМПД" directory-name="PmpdProxy" obsolete="true" />
     <module id="253" name="Загрузчик карты" directory-name="MapLoader" />
     <module id="254" name="Загрузчик" directory-name="Loader" />
   </block>
