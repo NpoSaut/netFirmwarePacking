@@ -59,8 +59,18 @@ namespace FirmwarePacking.Repositories
 
         private IDictionary<string, IRepositoryElement> LoadPackages()
         {
-            return RepositoryRoot.EnumerateFiles(PackageSearchPattern, SearchOption.AllDirectories)
-                                 .ToDictionary(f => f.FullName, f => LoadElement(f.FullName));
+            var res = new Dictionary<string, IRepositoryElement>();
+
+            foreach (FileInfo file in RepositoryRoot.EnumerateFiles(PackageSearchPattern, SearchOption.AllDirectories))
+            {
+                try
+                {
+                    res.Add(file.FullName, LoadElement(file.FullName));
+                }
+                catch (Exception) { }
+            }
+
+            return res;
         }
 
         protected IRepositoryElement LoadElement(String FileName) { return new MemoryRepositoryElement(FirmwarePackage.Open(FileName)); }
