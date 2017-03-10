@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <xs:schema id="sfp-index"
-           targetNamespace="https://repo.nposaut.ru/schemas/sfp-index.xsd"
+           targetNamespace="https://repo.saut.ru/schemas/sfp-index.xsd"
            elementFormDefault="qualified"
-           xmlns="https://repo.nposaut.ru/schemas/sfp-index.xsd"
+           xmlns="https://repo.saut.ru/schemas/sfp-index.xsd"
            xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 
