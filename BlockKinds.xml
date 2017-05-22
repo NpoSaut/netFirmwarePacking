@@ -38,8 +38,9 @@
     <modification id="2" name="Миландр" device="mdr32f9q2i" default-bootloader="5" config="00624041" board="MDR" />
   </block>
   <block id="29" name="(Б)РС-АЛСН" channels="1">
-    <modification id="2" name="Базовая" device="at91sam7a3" default-bootloader="4" config="009D0000" board="SAM7" />
+    <modification id="2" name="00" device="at91sam7a3" default-bootloader="4" config="009D0000" board="SAM7" />
     <modification id="1" name="01" device="mdr32f9q2i" default-bootloader="5" config="00044041" board="MDR" />
+	<modification id="3" name="01 (ДКСВ)" device="mdr32f9q2i" default-bootloader="5" config="05044041" board="MDR" />
   </block>
   <block id="30" name="Монитор-КХ" channels="1">
     <modification id="1" name="Базовая" device="mini100" default-bootloader="6" kernl-image="zImage-800x480-logo" />
