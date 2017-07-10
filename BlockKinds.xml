@@ -108,13 +108,9 @@
     <module id="254" name="Загрузчик" directory-name="Loader" />
   </block>
   <block id="45" name="АППИ" channels="1">
-    <modification id="1" name="Базовая" device="at91sam7a3" default-bootloader="0" config="0" board="SAM7" />
-  </block>
-  <block id="46" name="АППИ-2" channels="1">
-    <modification id="1" name="Базовая" device="at91sam7a3" default-bootloader="0" config="0" board="SAM7" />
-  </block>
-  <block id="47" name="АППИ-2М" channels="1">
-    <modification id="1" name="Базовая" device="mdr32f9q2i" default-bootloader="0" config="0" board="MDR" />
+    <modification id="1" name="АППИ" device="at91sam7a3" default-bootloader="0" config="0" board="SAM7" />
+    <modification id="2" name="АППИ-2" device="at91sam7a3" default-bootloader="0" config="0" board="SAM7" />
+    <modification id="3" name="АППИ-2М" device="mdr32f9q2i" default-bootloader="0" config="0" board="MDR" />
   </block>
 
   <!-- Мастер-ячейки БС-КПА БЛОК -->
