@@ -91,7 +91,8 @@
     <modification id="1" name="Базовая" device="at91sam7a3" default-bootloader="0" board="SAM7" />
   </block>
   <block id="41" name="ПТК" channels="2">
-    <modification id="1" name="Базовая" device="at90can128" default-bootloader="9"  saut-modification="40" unichannel="true" />
+    <modification id="1" name="128кб" device="at90can128" default-bootloader="9"  saut-modification="40" unichannel="true" />
+    <modification id="2" name="64кб" device="at90can64" default-bootloader="9"  saut-modification="50" unichannel="true" />
   </block>
   <block id="42" name="ВС-САУТ" channels="3">
     <modification id="1" name="Базовая" device="vs-saut" default-bootloader="9"  saut-modification="11" />
