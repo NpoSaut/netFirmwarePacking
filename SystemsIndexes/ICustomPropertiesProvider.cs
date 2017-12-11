@@ -4,7 +4,7 @@ namespace FirmwarePacking.SystemsIndexes
 {
     public interface ICustomPropertiesProvider
     {
-        [CanBeNull]
+        [NotNull]
         string this[string PropertyName] { get; }
     }
 }

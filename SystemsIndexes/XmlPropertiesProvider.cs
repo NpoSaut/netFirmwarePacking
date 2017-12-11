@@ -1,5 +1,5 @@
-﻿using System;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
+using FirmwarePacking.SystemsIndexes.Exceptions;
 
 namespace FirmwarePacking.SystemsIndexes
 {
@@ -10,7 +10,13 @@ namespace FirmwarePacking.SystemsIndexes
 
         public string this[string PropertyName]
         {
-            get { return (String)_element.Attribute(PropertyName); }
+            get
+            {
+                var attribute = _element.Attribute(PropertyName);
+                if (attribute == null)
+                    throw new CustomPropertyIsNotSpecifiedIndexException(PropertyName);
+                return (string)attribute;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FirmwarePacking.SystemsIndexes.Exceptions;
 
 namespace FirmwarePacking.SystemsIndexes
 {
@@ -9,7 +10,12 @@ namespace FirmwarePacking.SystemsIndexes
 
         public string this[string PropertyName]
         {
-            get { return _dictionary[PropertyName]; }
+            get
+            {
+                if (!_dictionary.TryGetValue(PropertyName, out var res))
+                    throw new CustomPropertyIsNotSpecifiedIndexException(PropertyName);
+                return res;
+            }
         }
     }
 }
