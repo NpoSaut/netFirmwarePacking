@@ -116,6 +116,10 @@
   <block id="46" name="Коммутатор-05" channels="1">
     <modification id="1" name="Базовая" device="lpc1758" default-bootloader="15" board="LPC17XX" />
   </block>
+  <block id="47" name="СВОП ССТ" channels="1">
+    <modification id="1" name="iMX.6" device="iMX.6" default-bootloader="10" />
+    <module id="1" name="Индикатор" directory-name="QtLed" />
+  </block>
 
   <!-- Мастер-ячейки БС-КПА БЛОК -->
   <block id="1000" name="БС-КПА М-IN" channels="2">
