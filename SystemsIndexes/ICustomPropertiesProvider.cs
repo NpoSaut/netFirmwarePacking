@@ -6,5 +6,7 @@ namespace FirmwarePacking.SystemsIndexes
     {
         [NotNull]
         string this[string PropertyName] { get; }
+
+        bool HasProperty(string PropertyName);
     }
 }
