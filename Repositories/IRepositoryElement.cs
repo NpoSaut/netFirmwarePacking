@@ -43,5 +43,8 @@ namespace FirmwarePacking.Repositories
         /// <summary>Загружает необходимый компонент из тела пакета</summary>
         /// <param name="Target">Цель, компонент для которой требуется</param>
         FirmwareComponent GetComponent(ComponentTarget Target);
+
+        /// <summary>Загружает всё тело пакета</summary>
+        FirmwarePackage GetPackage();
     }
 }
