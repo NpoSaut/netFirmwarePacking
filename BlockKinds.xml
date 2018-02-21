@@ -120,6 +120,10 @@
     <modification id="1" name="iMX.6" device="iMX.6" default-bootloader="10" />
     <module id="1" name="Индикатор" directory-name="QtLed" />
   </block>
+  <block id="48" name="БРС-CAN" channels="1">
+    <modification id="1" name="Внутр." device="at91sam7a3" default-bootloader="0" config="0" board="SAM7" />
+    <modification id="2" name="Внеш."  device="at91sam7a3" default-bootloader="0" config="0" board="SAM7" />
+  </block>
 
   <!-- Мастер-ячейки БС-КПА БЛОК -->
   <block id="1000" name="БС-КПА М-IN" channels="2">
