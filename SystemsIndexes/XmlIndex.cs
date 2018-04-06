@@ -14,6 +14,9 @@ namespace FirmwarePacking.SystemsIndexes
         private ReadOnlyCollection<BlockKind> _Blocks;
         public override ReadOnlyCollection<BlockKind> Blocks { get { return _Blocks; } }
 
+        private static readonly Lazy<IIndex> _defaultIndex = new Lazy<IIndex>(() => new XmlIndex("BlockKinds.xml"));
+        public static IIndex Default => _defaultIndex.Value;
+
         public XmlIndex(String Filename)
             : this(XDocument.Load(Filename).Root)
         { }

@@ -6,6 +6,9 @@ namespace FirmwarePacking.SystemsIndexes
 {
     public class IndexHelper : IIndexHelper
     {
+        private static readonly Lazy<IIndexHelper> _defaultIndexHelper = new Lazy<IIndexHelper>(() => new IndexHelper(XmlIndex.Default));
+        public static IIndexHelper Default => _defaultIndexHelper.Value;
+
         private readonly IIndex _index;
 
         public IndexHelper(IIndex Index)
