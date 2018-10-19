@@ -9,25 +9,24 @@ namespace FirmwarePacking
     {
         private readonly Lazy<IList<FirmwareFile>> _files;
 
-        private FirmwareComponent() { Name = Guid.NewGuid().ToString(); }
-
-        public FirmwareComponent(IList<ComponentTarget> Targets, IEnumerable<FirmwareFile> Files)
-            : this()
+        public FirmwareComponent(IList<ComponentTarget> Targets, IList<FirmwareFile> Files)
         {
+            Name = Targets.Aggregate("Component", (name, t) => name += $" {t.CellId}.{t.CellModification}.{t.Module}.{t.Channel}");
             this.Targets = Targets;
-            _files = new Lazy<IList<FirmwareFile>>(Files.ToList);
+            _files = new Lazy<IList<FirmwareFile>>(() => Files);
+
         }
 
         public FirmwareComponent(XElement XComponent, IPackageContentProvider ContentProvider)
-            : this()
         {
+            Name = XComponent.Attribute("Directory").Value;
             Targets = XComponent.Elements("TargetModule").Select(XTarget => (ComponentTarget)XTarget).ToList();
             BootloaderRequirement = GetBootloaderRequirement(XComponent.Element("BootloaderRequirement"));
 
             _files = new Lazy<IList<FirmwareFile>>(ContentProvider.LoadFirmwareFiles);
         }
 
-        public String Name { get; set; }
+        public String Name { get; }
         public IList<ComponentTarget> Targets { get; set; }
 
         public IList<FirmwareFile> Files
