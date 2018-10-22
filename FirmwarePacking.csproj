@@ -47,6 +47,7 @@
     <Compile Include="FirmwareFile.cs" />
     <Compile Include="FirmwarePackage.cs" />
     <Compile Include="ComponentTarget.cs" />
+    <Compile Include="IdentifierProvider.cs" />
     <Compile Include="IPackageContentProvider.cs" />
     <Compile Include="PackageInformation.cs" />
     <Compile Include="Properties\Annotations.cs" />

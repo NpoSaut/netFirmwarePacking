@@ -21,7 +21,7 @@ namespace FirmwarePacking
         public const char PathSeparator = '/';
 
         /// <summary>Текущая версия формата упаковщика</summary>
-        public const int Format_ActualVersion = 5;
+        public const int Format_ActualVersion = 6;
 
         /// <summary>Самая старая версия упаковщика, совместимая с текущим форматом</summary>
         public const int Format_CompatibleVersion = 1;
@@ -110,18 +110,18 @@ namespace FirmwarePacking
             }
         }
 
-        private static void ZipFile(ZipStorer zip, XDocument doc, String ZipPath)
+        private void ZipFile(ZipStorer zip, XDocument doc, String ZipPath)
         {
             var ms = new MemoryStream();
             doc.Save(ms);
             ms.Seek(0, SeekOrigin.Begin);
-            zip.AddStream(ZipStorer.Compression.Deflate, ZipPath, ms, DateTime.Now, "");
+            zip.AddStream(ZipStorer.Compression.Deflate, ZipPath, ms, Information.ReleaseDate, "");
         }
 
-        private static void ZipFile(ZipStorer zip, Byte[] buff, String ZipPath)
+        private void ZipFile(ZipStorer zip, Byte[] buff, String ZipPath)
         {
             var ms = new MemoryStream(buff);
-            zip.AddStream(ZipStorer.Compression.Deflate, ZipPath, ms, DateTime.Now, "");
+            zip.AddStream(ZipStorer.Compression.Deflate, ZipPath, ms, Information.ReleaseDate, "");
         }
 
         private static IEnumerable<FirmwareFile> DecodeFilesInZip(ZipStorer zip, String componentRoot)
