@@ -18,4 +18,14 @@ namespace FirmwarePacking
 
         public override string ToString() { return string.Format("ID загрузчика: {0}, версия: {1}", BootloaderId, BootloaderVersion); }
     }
+
+    public static class BootloaderRequirementExtensions
+    {
+        public static bool Suits(this BootloaderRequirement Requirement, int BootloaderId, int BootloaderCompatibleVersion, int BootloaderVersion)
+        {
+            if (Requirement == null)
+                return true;
+            return Requirement.BootloaderId == BootloaderId && Requirement.BootloaderVersion.Intersects(BootloaderCompatibleVersion, BootloaderVersion);
+        }
+    }
 }
