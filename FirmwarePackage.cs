@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -35,18 +33,18 @@ namespace FirmwarePacking
         public PackageInformation Information { get; set; }
         public List<FirmwareComponent> Components { get; set; }
 
-        public static FirmwarePackage Open(String FileName)
+        public static FirmwarePackage Open(string FileName)
         {
-            using (ZipStorer pack = ZipStorer.Open(FileName, FileAccess.Read))
+            using (var pack = ZipStorer.Open(FileName, FileAccess.Read))
             {
                 pack.EncodeUTF8 = true;
-                List<ZipStorer.ZipFileEntry> files = pack.ReadCentralDir();
-                ZipStorer.ZipFileEntry index = files.Single(f => f.FilenameInZip == "index.xml");
+                var files = pack.ReadCentralDir();
+                var index = files.Single(f => f.FilenameInZip == "index.xml");
                 var ms = new MemoryStream();
                 pack.ExtractFile(index, ms);
                 ms.Seek(0, SeekOrigin.Begin);
 
-                XDocument doc = XDocument.Load(ms);
+                var doc = XDocument.Load(ms);
 
                 // Проверка версии файла с прошивкой
                 if (IsFormatVersionCompatible((int?)doc.Root.Attribute("FormatVersion") ?? 1, (int?)doc.Root.Attribute("FormatCompatibleVersion") ?? 1)
@@ -54,15 +52,15 @@ namespace FirmwarePacking
                     throw new FirmwarePackageUncompatibleFormatException();
 
                 return new FirmwarePackage
-                       {
-                           Information = new PackageInformation(doc.Root.Element("FirmwareInformation")),
-                           Components = doc.Root.Elements("Component").Select(XComponent =>
-                                                                              new FirmwareComponent(
-                                                                                  XComponent,
-                                                                                  new SfpFilePackageContentProvider(FileName,
-                                                                                                                    (string)XComponent.Attribute("Directory"))))
-                                           .ToList()
-                       };
+                {
+                    Information = new PackageInformation(doc.Root.Element("FirmwareInformation")),
+                    Components = doc.Root.Elements("Component").Select(XComponent =>
+                                                                           new FirmwareComponent(
+                                                                               XComponent,
+                                                                               new SfpFilePackageContentProvider(FileName,
+                                                                                                                 (string)XComponent.Attribute("Directory"))))
+                                    .ToList()
+                };
             }
         }
 
@@ -70,11 +68,11 @@ namespace FirmwarePacking
         {
             // Если версии форматов полностью совпадают
             if (Version == Format_ActualVersion) return FormatVersionCompatiblity.Actual;
-                // Если версия формата файла устарела, но всё ещё является поддерживаемой данной библиотекой
+            // Если версия формата файла устарела, но всё ещё является поддерживаемой данной библиотекой
             if (Version < Format_ActualVersion && Version >= Format_LastSupportedVersion) return FormatVersionCompatiblity.Compatible;
-                // Если версия формата новее, чем версия формата данной библиотеки, но она является совместимой с устаревшей версией библиотеки
+            // Если версия формата новее, чем версия формата данной библиотеки, но она является совместимой с устаревшей версией библиотеки
             if (Version > Format_ActualVersion && CompatibleVersion <= Format_ActualVersion) return FormatVersionCompatiblity.Compatible;
-                // Ну, и во всех остальных случаях считаем версию не совместимой
+            // Ну, и во всех остальных случаях считаем версию не совместимой
             return FormatVersionCompatiblity.NotCompatible;
         }
 
@@ -86,31 +84,33 @@ namespace FirmwarePacking
                              new XAttribute("FormatCompatibleVersion", Format_CompatibleVersion),
                              Information.ToXElement(),
                              Components.Select((comp, i) =>
-                                               new XElement("Component",
-                                                            new XAttribute("Directory", comp.Name),
-                                                            new XElement("BootloaderRequirement",
-                                                                         new XAttribute("Id", comp.BootloaderRequirement.BootloaderId),
-                                                                         new XAttribute("MinVersion", comp.BootloaderRequirement.BootloaderVersion.Minimum),
-                                                                         new XAttribute("MaxVersion", comp.BootloaderRequirement.BootloaderVersion.Maximum)),
-                                                            comp.Targets.Select(t => t.ToXElement())
+                                                   new XElement("Component",
+                                                                new XAttribute("Directory", comp.Name),
+                                                                comp.BootloaderRequirements
+                                                                    .Select(
+                                                                        r =>
+                                                                            new XElement(
+                                                                                "BootloaderRequirement",
+                                                                                new XAttribute("Id", r.BootloaderId),
+                                                                                new XAttribute("MinVersion", r.BootloaderVersion.Minimum),
+                                                                                new XAttribute("MaxVersion", r.BootloaderVersion.Maximum))),
+                                                                comp.Targets.Select(t => t.ToXElement())
                                                    ))));
         }
 
         public void Save(string p)
         {
-            using (ZipStorer zip = ZipStorer.Create(p, ""))
+            using (var zip = ZipStorer.Create(p, ""))
             {
                 zip.EncodeUTF8 = true;
                 ZipFile(zip, GetIndex(), "index.xml");
-                foreach (FirmwareComponent component in Components)
-                {
-                    foreach (FirmwareFile file in component.Files)
-                        ZipFile(zip, file.Content, Path.Combine(component.Name, file.RelativePath));
-                }
+                foreach (var component in Components)
+                foreach (var file in component.Files)
+                    ZipFile(zip, file.Content, Path.Combine(component.Name, file.RelativePath));
             }
         }
 
-        private void ZipFile(ZipStorer zip, XDocument doc, String ZipPath)
+        private void ZipFile(ZipStorer zip, XDocument doc, string ZipPath)
         {
             var ms = new MemoryStream();
             doc.Save(ms);
@@ -118,13 +118,13 @@ namespace FirmwarePacking
             zip.AddStream(ZipStorer.Compression.Deflate, ZipPath, ms, Information.ReleaseDate, "");
         }
 
-        private void ZipFile(ZipStorer zip, Byte[] buff, String ZipPath)
+        private void ZipFile(ZipStorer zip, byte[] buff, string ZipPath)
         {
             var ms = new MemoryStream(buff);
             zip.AddStream(ZipStorer.Compression.Deflate, ZipPath, ms, Information.ReleaseDate, "");
         }
 
-        private static IEnumerable<FirmwareFile> DecodeFilesInZip(ZipStorer zip, String componentRoot)
+        private static IEnumerable<FirmwareFile> DecodeFilesInZip(ZipStorer zip, string componentRoot)
         {
             return zip.ReadCentralDir()
                       .Where(f => GetFirstDirName(f.FilenameInZip) == componentRoot)

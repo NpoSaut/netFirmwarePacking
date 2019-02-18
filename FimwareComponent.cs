@@ -21,7 +21,9 @@ namespace FirmwarePacking
         {
             Name = XComponent.Attribute("Directory").Value;
             Targets = XComponent.Elements("TargetModule").Select(XTarget => (ComponentTarget)XTarget).ToList();
-            BootloaderRequirement = GetBootloaderRequirement(XComponent.Element("BootloaderRequirement"));
+            BootloaderRequirements = XComponent.Elements("BootloaderRequirement")
+                                               .Select(GetBootloaderRequirement)
+                                               .ToList();
 
             _files = new Lazy<IList<FirmwareFile>>(ContentProvider.LoadFirmwareFiles);
         }
@@ -29,22 +31,17 @@ namespace FirmwarePacking
         public String Name { get; }
         public IList<ComponentTarget> Targets { get; set; }
 
-        public IList<FirmwareFile> Files
-        {
-            get { return _files.Value; }
-        }
+        public IList<FirmwareFile> Files => _files.Value;
 
-        public BootloaderRequirement BootloaderRequirement { get; set; }
+        public IList<BootloaderRequirement> BootloaderRequirements { get; set; }
 
         private BootloaderRequirement GetBootloaderRequirement(XElement XRequirement)
         {
-            if (XRequirement == null)
-                return null;
             return new BootloaderRequirement((int)XRequirement.Attribute("Id"),
                                              new VersionRequirements((int)XRequirement.Attribute("MinVersion"),
                                                                      (int)XRequirement.Attribute("MaxVersion")));
         }
 
-        public override string ToString() { return string.Format("Component for {0}", string.Join(", ", Targets)); }
+        public override string ToString() { return $"Component for {string.Join(", ", Targets)}"; }
     }
 }
