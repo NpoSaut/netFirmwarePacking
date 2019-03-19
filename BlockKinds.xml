@@ -125,7 +125,7 @@
     <modification id="2" name="Внеш."  device="at91sam7a3" default-bootloader="0" config="0" board="SAM7" />
   </block>
   <block id="49" name="ПУ-СВОП" channels="1">
-    <modification id="1" name="Базовая" device="stm32l0" default-bootloader="0" config="0" board="STM32L0" />
+    <modification id="1" name="Базовая" device="stm32l1" default-bootloader="0" config="0" board="STM32L1" />
   </block>
 
   <!-- Мастер-ячейки БС-КПА БЛОК -->
