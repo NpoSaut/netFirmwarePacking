@@ -127,7 +127,7 @@
   <block id="49" name="ПУ-СВОП" channels="1">
     <modification id="1" name="Базовая" device="stm32l1" default-bootloader="0" config="0" board="STM32L1" />
   </block>
-  <block id="50" name="МСС" channels="1">
+  <block id="50" name="МСС" channels="2">
     <modification id="1" name="МСС"    device="mcs51"      default-bootloader="0" />
     <modification id="2" name="МСС-03" device="mdr32f9q2i" default-bootloader="5" config="00524140" board="MDR-x2" unichannel="true" />
   </block>
