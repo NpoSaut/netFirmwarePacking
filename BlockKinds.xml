@@ -81,6 +81,11 @@
     <module id="1" name="Индикатор" directory-name="QtMon" />
     <module id="254" name="Загрузчик" directory-name="Loader" />
   </block>
+  <block id="51" name="Монитор 8" channels="1">
+    <modification id="1" name="iMX.6" device="iMX.6" default-bootloader="6" />
+    <module id="1" name="Индикатор" directory-name="QtMon" />
+    <module id="254" name="Загрузчик" directory-name="Loader" />
+  </block>
   <block id="38" name="УСК-01" channels="1">
     <modification id="1" name="Миландр" device="mdr32f9q2i" default-bootloader="7" board="MDR" />
   </block>
