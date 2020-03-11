@@ -137,6 +137,10 @@
     <modification id="2" name="МСС-03" device="mdr32f9q2i" default-bootloader="5" config="00524140" board="MDR-x2" unichannel="true" />
   </block>
 
+  <block id="52" name="МВВИ" channels="1">
+    <modification id="1" name="Базовая" device="mdr32f9q2i" default-bootloader="5" config="00424041" board="MDR-x2" />
+  </block>
+
   <!-- Мастер-ячейки БС-КПА БЛОК -->
   <block id="1000" name="БС-КПА М-IN" channels="2">
     <modification id="1" name="Базовая" device="at90can128" default-bootloader="1" unichannel="true" />
