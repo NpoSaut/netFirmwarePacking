@@ -1,85 +1,24 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{ACAFB9B6-F2F8-4B22-8E8A-0C453FBF71B6}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FirmwarePacking</RootNamespace>
-    <AssemblyName>FirmwarePacking</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>net40</TargetFramework>
+    <AssemblyTitle>FirmwarePacking</AssemblyTitle>
+    <Company>НПО САУТ</Company>
+    <Product>FirmwarePacking</Product>
+    <Copyright>Copyright ©  2013</Copyright>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="BootloaderRequirement.cs" />
-    <Compile Include="Exceptions\FirmwarePackageFormatException.cs" />
-    <Compile Include="Exceptions\FirmwarePackageUncompatibleFormatException.cs" />
-    <Compile Include="FimwareComponent.cs" />
-    <Compile Include="FirmwareFile.cs" />
-    <Compile Include="FirmwarePackage.cs" />
-    <Compile Include="ComponentTarget.cs" />
-    <Compile Include="IdentifierProvider.cs" />
-    <Compile Include="IPackageContentProvider.cs" />
-    <Compile Include="PackageInformation.cs" />
-    <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\DirectoryRepository.cs" />
-    <Compile Include="Repositories\FileLinkRepositoryElement.cs" />
-    <Compile Include="Repositories\INotifyRepository.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Repositories\MemoryRepositoryElement.cs" />
-    <Compile Include="Repositories\NotifyDirectoryRepository.cs" />
-    <Compile Include="Repositories\RepositoryBase.cs" />
-    <Compile Include="Repositories\IRepositoryElement.cs" />
-    <Compile Include="Repositories\LinkRepositoryElement.cs" />
-    <Compile Include="Repositories\StreamLinkRepositoryElement.cs" />
-    <Compile Include="SfpFilePackageContentProvider.cs" />
-    <Compile Include="SystemsIndexes\BlockKind.cs" />
-    <Compile Include="SystemsIndexes\DictionaryCustomPropertiesProvider.cs" />
-    <Compile Include="SystemsIndexes\Exceptions\CustomPropertyIsNotSpecifiedIndexException.cs" />
-    <Compile Include="SystemsIndexes\Exceptions\ElementNotFoundIndexException.cs" />
-    <Compile Include="SystemsIndexes\Exceptions\IndexException.cs" />
-    <Compile Include="SystemsIndexes\ICustomPropertiesProvider.cs" />
-    <Compile Include="SystemsIndexes\IIndex.cs" />
-    <Compile Include="SystemsIndexes\IIndexHelper.cs" />
-    <Compile Include="SystemsIndexes\Index.cs" />
-    <Compile Include="SystemsIndexes\IndexHelper.cs" />
-    <Compile Include="SystemsIndexes\IndexHelperExtensionMethods.cs" />
-    <Compile Include="SystemsIndexes\ModificationKind.cs" />
-    <Compile Include="SystemsIndexes\ModuleKind.cs" />
-    <Compile Include="SystemsIndexes\XmlIndex.cs" />
-    <Compile Include="SystemsIndexes\XmlPropertiesProvider.cs" />
-    <Compile Include="VersionRequirements.cs" />
-    <Compile Include="ZipStorer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="BlockKinds.xml">
@@ -95,13 +34,4 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
