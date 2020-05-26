@@ -94,7 +94,8 @@ namespace FirmwarePacking
                                                                                 new XAttribute("Id", r.BootloaderId),
                                                                                 new XAttribute("MinVersion", r.BootloaderVersion.Minimum),
                                                                                 new XAttribute("MaxVersion", r.BootloaderVersion.Maximum))),
-                                                                comp.Targets.Select(t => t.ToXElement())
+                                                                comp.Targets.Select(t => t.ToXElement()),
+                                                                comp.CustomProperties.Select(p => p.ToXElement())
                                                    ))));
         }
 

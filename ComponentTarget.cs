@@ -27,16 +27,16 @@ namespace FirmwarePacking
         }
 
         /// <summary>Идентификатор ячейки</summary>
-        public int CellId { get; set; }
+        public int CellId { get; }
 
         /// <summary>Модификация ячейки</summary>
-        public int CellModification { get; set; }
+        public int CellModification { get; }
 
         /// <summary>Номер канала (полукомплекта)</summary>
-        public int Channel { get; set; }
+        public int Channel { get; }
 
         /// <summary>Номер модуля</summary>
-        public int Module { get; set; }
+        public int Module { get; }
 
         public XElement ToXElement() { return ToXElement("TargetModule"); }
 
@@ -55,7 +55,7 @@ namespace FirmwarePacking
         public static explicit operator XElement(ComponentTarget ti) { return ti.ToXElement(); }
         public static explicit operator ComponentTarget(XElement xti) { return new ComponentTarget(xti); }
 
-        public override string ToString() { return string.Format("Cell={0}[{1}]/{2} Module={3}", CellId, CellModification, Channel, Module); }
+        public override string ToString() { return $"Cell={CellId}[{CellModification}]/{Channel} Module={Module}"; }
 
         #region Equality
 
