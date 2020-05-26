@@ -19,10 +19,10 @@ namespace FirmwarePacking
         public const char PathSeparator = '/';
 
         /// <summary>Текущая версия формата упаковщика</summary>
-        public const int Format_ActualVersion = 6;
+        public const int Format_ActualVersion = 7;
 
         /// <summary>Самая старая версия упаковщика, совместимая с текущим форматом</summary>
-        public const int Format_CompatibleVersion = 1;
+        public const int Format_CompatibleVersion = 7;
 
         /// <summary>Текущая версия формата упаковки, совместимая с данной библиотекой</summary>
         public const int Format_LastSupportedVersion = 1;
