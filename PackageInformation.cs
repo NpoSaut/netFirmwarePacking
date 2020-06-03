@@ -35,7 +35,7 @@ namespace FirmwarePacking
             ReleaseDate = (DateTime)xVersionInfo.Attribute("ReleaseDate");
         }
 
-        public string Identifier { get; set; }
+        public string Identifier { get; internal set; }
 
         /// <summary>Версия прошивки</summary>
         public Version FirmwareVersion { get; set; }
