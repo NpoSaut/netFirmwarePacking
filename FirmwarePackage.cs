@@ -30,7 +30,7 @@ namespace FirmwarePacking
         public const string FirmwarePackageExtension = "sfp";
         public const char ZipFileDirectorySeparatorChar = '/';
 
-        public PackageInformation Information { get; set; }
+        public PackageInformation Information { get; private set; }
         public List<FirmwareComponent> Components { get; set; }
 
         public static FirmwarePackage Open(string FileName)
@@ -51,7 +51,7 @@ namespace FirmwarePacking
                     == FormatVersionCompatiblity.NotCompatible)
                     throw new FirmwarePackageUncompatibleFormatException();
 
-                return new FirmwarePackage
+                var package = new FirmwarePackage
                 {
                     Information = new PackageInformation(doc.Root.Element("FirmwareInformation")),
                     Components = doc.Root.Elements("Component").Select(XComponent =>
@@ -61,6 +61,11 @@ namespace FirmwarePacking
                                                                                                                  (string)XComponent.Attribute("Directory"))))
                                     .ToList()
                 };
+
+                if (string.IsNullOrWhiteSpace(package.Information.Identifier))
+                    package.Information.Identifier = IdentifierProvider.GetIdentifier(package);
+                
+                return package;
             }
         }
 

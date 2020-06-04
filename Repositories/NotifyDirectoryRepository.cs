@@ -70,7 +70,7 @@ namespace FirmwarePacking.Repositories
                                           }
                                           OnUpdated(RepositoryUpdatedEventArgs.CreateAddedEventArgs(element));
                                       }
-                                      catch (OperationCanceledException e) { }
+                                      catch (OperationCanceledException) { }
                                       finally
                                       {
                                           _fileWatchOperations.TryRemove(FileName, out ts);
